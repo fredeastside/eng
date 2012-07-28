@@ -1,0 +1,24 @@
+/* -------------------- SUBFOOTER -------------------- */
+.subfooter { width: 100%; height: 100px; clear: both;  overflow: hidden; position: relative;padding: 0 0 0 240px; }
+
+/* -------------------- FOOTER -------------------- */
+.footer { width: 100%; height: 92px; bottom: 0; left: 0; right: 0; position: absolute; color: #adadad; z-index: 1000;}
+.f-inner { min-width: 996px;max-width:1100px; height: 92px; margin: 0 auto; position: relative; }
+.footer a { color: #adadad ; }
+
+
+.f-banner{position:absolute;top: 27px;right:20px;width: 220px;height: 40px;background: url("/images/admin/banners.gif") no-repeat ;}
+.ban2{position:absolute;margin: 35px 0 0 0;}
+.ban3{position:absolute;margin: 70px 0 0 0;}
+.site_create{float: right;position: relative;margin: 150px 40px 0 0; }
+
+
+/* ----- copyrights ----- */
+.f-cr { left: 155px; top: 18px; position: absolute;padding: 5px 0;}
+.f-cr UL LI A{text-decoration: none;}
+.f-cr UL LI{margin: 5px 0;}
+.f-cr .caption{color:#ffffff;}
+.f-cr .caption A{color:#ffffff;padding: 0 25px 0 0;text-decoration: none;}
+.fc-right{left: 380px; top: 40px; border: none;}
+/* ----- production studio ----- */
+.f-prod { right: 0; top: 18px; position: absolute; width: 330px; }

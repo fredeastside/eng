@@ -1,0 +1,45 @@
+/* -------------------- HEADER -------------------- */
+.header 
+	{ width: 100%; height: 92px;  position: relative; z-index: 10; border-bottom: 6px #ed1927 solid;background:  #fff; }
+.h-logo 
+	{ left: 35px; top: 18px; position: absolute; background: url("/images/admin/logo.gif") no-repeat;width: 145px;height: 55px; z-index: 200000;}
+
+.user-info
+	{position: absolute;right: 50px;top:20px;z-index: 50;line-height: 22px;}
+.user-info A
+	{color:#000000;}
+.user-info A:HOVER
+	{color: #ed1927;}
+A.red-link
+	{color: #ed1927;}	
+.user-info img
+	{margin: 2px 0 0 4px;}	
+/* ----- menu ----- */
+.h-menu 
+	{ left: 210px; top: 12px; position: absolute; width: 100%; height: 26px; z-index: 20; }
+.h-menu TABLE 
+	{height: 25px;font: 14px/20px 'Trebuchet MS';}
+.h-menu td
+	 {  text-align: center;padding: 0 10px;}
+.h-menu td a 
+	{color: #000000;font-size:14px;height: 80px;display:block;text-decoration: none;cursor: pointer;}
+.h-menu td a:HOVER 
+	{color: #ed1927;}
+.h-menu A.active
+	{background: url("/images/admin/active-link-icon.gif") center 100% no-repeat;color:#ed1927;}
+.h-menu td DIV
+	{background: no-repeat 100% center;width: 55px;height: 52px;margin: 0 auto;}
+.h-menu td DIV.content-icon
+	{background-image:url("/images/admin/content-icon.gif");}
+.h-menu td DIV.users-icon
+	{background-image:url("/images/admin/users-icon.gif");}
+.h-menu td DIV.config-icon
+	{background-image:url("/images/admin/congif-icon.gif");}
+
+	
+	
+	
+	
+	
+	
+	

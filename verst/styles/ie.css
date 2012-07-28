@@ -1,0 +1,62 @@
+#menu ul li{
+    display:inline;
+}
+#search-bar input{
+    padding: 5px 25px 0 10px;
+
+}
+#menu .menu-right .menu-mid{
+    display:inline-block;
+}
+dl{
+    display:inline-block;
+    zoom:1;
+}
+.carousel_left{
+    top:94%;
+}
+.carousel_right{
+    top:94%;
+}
+.content .hidden_port td{
+    display:inline-block;
+    padding-top:10px;
+} 
+.content .hidden_port .info-img{
+    overflow: hidden;
+    margin:0 auto;
+}
+.content .hidden_port .info-img img{
+    display: -moz-inline-box;
+    height: auto;
+    display: inline-block;
+    overflow: visible;
+    vertical-align: middle;
+    margin:0 auto;
+}
+.content .hidden_port .info-img{
+}
+.smarty{
+    position:absolute;
+    right:120px;
+    margin-top:-27px;
+}
+.tovar .image img, .tovar .image div{
+    display:inline;
+}
+
+.button-gray .button-gray-right .button-gray-mid{
+    padding-top:4px;
+}
+.navigation{
+    margin-bottom:21px;
+}
+.button-blue .blue-right .blue-mid button{
+    margin-top:-12px;
+}
+.tovar .info .inputfield input{
+    margin-top:-1px;
+}
+.tovar .info .textfield textarea{
+    margin-top:-1px;
+}

@@ -1,0 +1,22 @@
+.content .block-right{
+    overflow:hidden;
+}
+
+.content .buttons-right{
+    overflow:hidden;
+    width:280px;
+}
+.content .buttons-left{
+    overflow:hidden;
+width:280px;
+}   
+.navigation .previous-button .button-gray, .navigation .next-button .button-gray, .navigation .page .button-gray{
+    width:5%;
+}
+
+.tovar .info .inputfield input{
+    border:none;
+}
+.tovar .info .textfield textarea{
+    border:none;
+}

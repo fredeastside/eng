@@ -1,0 +1,95 @@
+
+/* -------------------- reset defaults -------------------- */
+* { margin: 0; padding: 0; }
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, em, img, strong, sub, sup, strong, em, ins, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; border-width: 0; outline: 0; vertical-align: baseline; background: transparent; }
+html, body { width: 100%; height: 100%; }
+body { font: 12px/18px Arial; color: #313131; background-color: #ffffff; text-align: left; }
+table { border-collapse: collapse; border-spacing: 0; border-width: 0; }
+caption, td, th { vertical-align: top; }
+dl, ul, ol { margin: 0; padding: 0; list-style: none; }
+img { border: 0; border-width: 0; vertical-align: top; }
+
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+strong { font-weight: bold; }
+em { font-style: italic; }
+i { font-style: normal; }
+
+input, button { overflow: visible; }
+input, button, select { vertical-align: middle; }
+textarea { vertical-align: top; height: 72px; font: 12px/14px 'Verdana'; color: #555; padding: 1px 2px; border-width: 1px; }
+select { font: 12px/18px 'Arial'; color: #555; border-width: 1px; }
+select option { font: 12px/18px 'Verdana'; color: #555; }
+input.text { font: 12px/14px 'Arial'; color: #555; padding: 1px 2px; border: 1px #808080 solid; }
+input.file { width: 100%; height: 22px; }
+
+blockquote { quotes: none; }
+blockquote:before, blockquote:after { content: ""; }
+q { quotes: '\00AB' '\00BB' '\201E' '\201C'; }
+q:before { content: '\00AB'; }
+q:after { content: '\00BB'; }
+q q:before { content: '\201E'; }
+q q:after { content: '\201C'; }
+
+/* ----- global ----- */
+a { color: #2968b7; text-decoration: underline; font: 12px 'Arial';}
+a:hover { color: #2968b7; text-decoration: none;}
+h1 { font: 18px/22px 'Arial'; color: #000000;margin: 0 0 10px 0; }
+h2 { font: 18px/22px 'Arial'; color: #000000;margin: 0 0 10px 0; }
+h3 { font: 14px/20px 'Arial'; color: #000000;}
+
+
+/* ----- clear ----- */
+.cl { clear: both; height: 0; overflow: hidden; }
+.clf:after { content: ""; display: block; clear: both; visibility: hidden; height: 0; overflow: hidden; }
+.nobg { background: none !important; }
+.nobd { border: 0 !important; }
+.nom { margin: 0 !important; }
+.mop { padding: 0 !important; }
+.mopt { padding-top: 0 !important; }
+
+/*--------------COLOR----------------------*/
+.grey{color:#494949;}
+.white{color: #ffffff;}
+.black{color:#000;}
+
+/* -------------------- MAIN -------------------- */
+#page { width: 100%; min-width: 600px; height: 100%; position: relative; z-index: 1; }
+
+#form-login
+	{position:absolute;top:70px;left:50%;margin-left:-165px;width:270px;padding:7px 30px 12px 30px;border:1px solid #d7d5d6;background: url("/images/enter-bg.gif") repeat-y #f3f1f2;}
+#form-login #logo
+	{position:absolute;right:5px;background: url("/images/admin/enter-logo.png"); width: 73px;height: 40px;}
+#form-login #site
+	{margin: 13px 0 0 0;position:absolute;background: url("/favicon.ico") no-repeat;padding: 0 0 0 20px;}	
+#form-login #site A
+	{text-decoration: none;color: #000000;font-size: 14px;text-transform: capitalize;}	
+#form-login .caption
+	{font-size: 14px;font-weight: bold;margin: 48px 0 0 0;}
+#form-login .err
+	{color: #ff0208;font-size: 12px;}	
+#form-login .table-login TD
+	{padding: 3px 0;}
+#form-login .table-login TD .login
+	{border: #d4d2d3 1px solid;color:#7e7c7d;height: 20px;line-height:20px;padding: 2px 1px;width: 235px;}
+#form-login .table-login TD .small
+	{font-size: 11px;margin: 1px 0 0 5px;}
+
+.fmk-button
+	{color: #666566;border: none;background: none;cursor: pointer;}
+.fmk-button div
+	{background: url("/images/admin/fmk-button-l.gif") no-repeat;padding-left: 5px;line-height: 33px;font-size: 14px;}	
+.fmk-button div div
+	{padding: 0 5px 0 0;background: url("/images/admin/fmk-button-r.gif") no-repeat 100% 0;}
+.fmk-button div div div
+	{background: url("/images/admin/fmk-button-c.gif") repeat-x ;padding: 0;}
+.fmk-button div div div div
+	{background: url("/images/admin/fmk-button-c-r.gif") no-repeat 98% 11px;padding: 0 30px 0 7px;font: 14px/33px Arial;}	
+	
+#form-login .version	
+	{position: absolute;right: 2px;margin-top: -5px;color: #a9a9a9;}
+				
+#form-login .create
+	{position: absolute;right:0;margin: 20px 0 0 0;color: #535050;font-size: 11px;}
+#form-login .create A
+	{color:#535050;font-size: 11px;}

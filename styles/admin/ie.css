@@ -1,0 +1,27 @@
+/* ---------- IEs ---------- */
+
+
+* html .bg {filter: expression(fixPNG(this)); }
+
+
+/* ----- IE7 ----- */
+*+html .clf { zoom: 1; display: block; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

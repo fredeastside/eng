@@ -1,0 +1,259 @@
+
+/* -------------------- reset defaults -------------------- */
+* { margin: 0; padding: 0; }
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, em, img, strong, sub, sup, strong, em, ins, dl, dt, dd, ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; border-width: 0; outline: 0; vertical-align: baseline; background: transparent; }
+html, body { width: 100%; height: 100%; }
+body { font: 12px/18px Arial; color: #313131; background-color: #ffffff; text-align: left; }
+table { border-collapse: collapse; border-spacing: 0; border-width: 0; }
+caption, td, th { vertical-align: top; }
+dl, ul, ol { margin: 0; padding: 0; list-style: none; }
+img { border: 0; border-width: 0; vertical-align: top; }
+
+ins { text-decoration: underline; }
+del { text-decoration: line-through; }
+strong { font-weight: bold; }
+em { font-style: italic; }
+i { font-style: normal; }
+
+input, button { overflow: visible; }
+input, button, select { vertical-align: middle; }
+textarea { vertical-align: top; height: 72px; font: 12px/14px 'Verdana'; color: #555; padding: 1px 2px; border-width: 1px; }
+select { font: 12px/18px 'Arial';  }
+select option { font: 12px/18px 'Arial';  }
+input.text { font: 12px/14px 'Arial'; color: #555; padding: 1px 2px; border: 1px #808080 solid; }
+input.file { width: 100%; height: 22px; }
+
+blockquote { quotes: none; }
+blockquote:before, blockquote:after { content: ""; }
+q { quotes: '\00AB' '\00BB' '\201E' '\201C'; }
+q:before { content: '\00AB'; }
+q:after { content: '\00BB'; }
+q q:before { content: '\201E'; }
+q q:after { content: '\201C'; }
+
+/* ----- global ----- */
+a { color: #2968b7; text-decoration: underline; font: 12px 'Arial';}
+a:hover { color: #2968b7; text-decoration: none;}
+h1 { font: 18px/22px 'Arial'; color: #000000;margin: 0 0 10px 0; }
+h2 { font: 18px/22px 'Arial'; color: #000000;margin: 0 0 10px 0; }
+h3 { font: 14px/20px 'Arial'; color: #000000;}
+
+
+/* ----- clear ----- */
+.cl { clear: both; height: 0; overflow: hidden; }
+.clf:after { content: ""; display: block; clear: both; visibility: hidden; height: 0; overflow: hidden; }
+.nobg { background: none !important; }
+.nobd { border: 0 !important; }
+.nom { margin: 0 !important; }
+.mop { padding: 0 !important; }
+.mopt { padding-top: 0 !important; }
+
+/*--------------COLOR----------------------*/
+.grey{color:#494949;}
+.white{color: #ffffff;}
+.black{color:#000;}
+
+.flr
+	{float: right;}
+.fll
+	{float: left;}
+	
+.fmk-button-admin
+	{color: #000000;border: none;background: none;cursor: pointer;font: 12px Arial;}
+.fmk-button-admin div
+	{background: url("/images/admin/fmk-button-admin-l.png") no-repeat;padding-left: 5px;line-height: 30px;}	
+.fmk-button-admin div div
+	{padding: 0 5px 0 0;background: url("/images/admin/fmk-button-admin-r.png") no-repeat 100% 0;}
+.fmk-button-admin div div div
+	{background: url("/images/admin/fmk-button-admin-c.png") repeat-x ;padding: 0 6px 0 6px;}	
+	
+/* -------------------- MAIN -------------------- */
+#page
+	{ width: 100%;min-height:100%; min-width: 1000px; position: relative; z-index: 1; }
+#p-inner
+	{width: 100%;margin:0 auto;position:relative;z-index:7;padding:0;}
+
+#head
+	{position:relative;width:100%;color:#ffffff;height:89px;z-index:20;background: url("/images/admin/bg-head.png") repeat-x;}
+#head A	
+	{color:#ffffff;}
+#logo
+	{display:block;position:absolute;top:15px;left:30px;background: url("/images/admin/admin-logo.png") no-repeat; padding:38px 0 0 0; width: 179px;height: 12px;border-right: 1px solid #5d5d5d;font-size: 10px;text-decoration: none;}		
+#head #right-head
+	{position:absolute;right: 30px;top:10px;text-align: right;}
+#head #right-head #search-form
+	{background: url("/images/admin/search-box.gif") no-repeat scroll 0 0 transparent; height: 25px;margin: 10px 0 0 0;padding: 0;position: relative;width: 215px;}
+#head #right-head #search-form .text
+	{margin: 0 10px 0 0;width: 153px;height: 15px;padding: 2px 0 0 0;border: 0 none;outline: none;}
+#head #topmenu 
+	{position: absolute;bottom: 0px;left: 306px;}
+#head #topmenu DIV
+	{float: left;margin: 0 5px 0 0;}
+#head #topmenu DIV A
+	{color: #ffffff;font: 14px 'Arial';text-decoration: none;display: block;padding-left: 10px;}
+#head #topmenu DIV A span
+	{display: block;padding-right: 10px;height: 27px;}
+#head #topmenu DIV A span span 
+	{display: block;color: #ffffff;padding: 5px 5px 0 5px;height: 22px;}
+#head #topmenu DIV A.active, #head #topmenu DIV A:HOVER
+	{background: url("/images/admin/fmk-menu-top-l.png") no-repeat;}
+#head #topmenu DIV A.active span, #head #topmenu DIV A:HOVER span
+	{background: url("/images/admin/fmk-menu-top-r.png") no-repeat 100% 0;}
+#head #topmenu DIV A.active span span, #head #topmenu DIV A:HOVER span span 
+	{background: #ffffff;color: #000000;}
+	
+#head #child-container
+	{position: absolute;margin: 89px 0 0 190px;color: #000000;}
+#head #child-container .child-menu
+	{display:none;padding: 20px 10px;min-width: 590px;border: 2px solid #000000;border-top:none;background-color: #ffffff;border-radius:0px 0px 10px 10px;}
+#head #child-container .child-menu .item-group-menu
+	{float: left;margin: 0 0 0 20px;width: 200px;}
+#head #child-container .child-menu h2
+	{background: no-repeat;margin:0;padding: 5px 0 15px 65px;}	
+#head #child-container .child-menu ul
+	{;color: #2f3430;margin: 0 0 0 52px;}
+#head #child-container .child-menu ul li
+	{padding: 0;background: url("/images/admin/child-menu-ul-bg.gif") no-repeat 0 9px;padding: 2px 0 2px 10px;line-height: 14px;}			
+#head #child-container .child-menu A
+	{color: #0e5fd8;font-size: 11px;}
+#head #child-container .child-menu A:HOVER
+	{text-decoration: none;}
+
+	
+#content
+	{position:relative;color:#ffffff;z-index:10;color:#000000;padding: 40px 27px 0 27px;}	
+#content #left
+	{float: left;width: 216px;}
+#content #left .filters
+	{border: 1px solid #dad8d9;padding:15px;background-color: #f0f0f0;margin-bottom: 20px;color: #373737}
+#content #left .filters .menu-left li A
+	{display:block;padding:2px 0 2px 17px;font-weight: bold; background: url("/images/admin/fmk-left-menu.gif") 0px 4px no-repeat;}
+#content #left .filters .menu-left li A.active
+	{background-image: url("/images/admin/fmk-left-menu-active.gif");font-weight: bold;}
+#content #left .filters .menu-left li ul.child-left	
+	{display: none;}		
+#content #left .filters .menu-left li A:HOVER
+	{background-color: #4e4e4e;color: #ffffff;}
+#content #left .filters .menu-left li li A
+	{padding-left:34px;background-position: 17px 4px;font-weight: normal;}
+#content #left .filters .menu-left li A
+	{color: #000000;font-size: 11px;text-decoration: none;}	
+#content #left .filters .ul-count li A
+	{line-height: 20px;}	
+#content #left .filters .ul-count li.active A
+	{font-weight: bold;color: #373737;}
+#content #left .filters .ul-count li.active span
+	{font-weight: bold;}
+#content #left .filters input
+	{border: 1px solid #cdcdcd;}	
+#content #left .filters input.text
+	{width: 130px;margin-top: 3px;}		
+	
+#content #center
+	{position: relative;margin-left: 236px;border: 1px solid #dad8d9;padding: 12px;min-width: 851px;}	
+#p-inner #content .edit-center
+	{border: none;padding:0;}
+#content #center .edit-area
+	{position: relative;border: 1px solid #dad8d9;padding: 12px;}
+.tabs
+	{margin: 9px 0 9px 0;position: relative;z-index: 100;}			
+.tabs .tab
+	{border: 1px solid #dad8d9;padding: 10px;margin: 0 5px;background: url("/images/admin/tabs-bg.gif") repeat-x;color: #000000;text-decoration: none;}
+.tabs .active, .tabs .tab:HOVER
+	{background: none;border-bottom: 1px solid #ffffff;}	
+	
+#tree ul 
+	{}
+#tree .children 
+	{margin: 0 0 0 10px;}
+#tree .children li 
+	{padding: 0 0 0 20px;}
+#tree li div 
+	{padding: 3px 0;}
+#tree li div.actions
+	{display: none;margin: 0 0 0 50px;position: absolute;}
+#tree li div.actions A 
+	{margin: 0 6px;}
+#tree .cursor-move 
+	{cursor: move;}
+#tree A 
+	{color: #0E7CA8;font-size: 13px;text-decoration: none;}
+#tree A:hover 
+	{color: #6A6A6A;}
+#tree li div.hover-li 
+	{background: none repeat scroll 0 0 #F0F0F0;}
+#tree li div.hover-li div.actions 
+	{display: inline;}
+#tree li div.hover-li A
+	{color: #6A6A6A;}
+#tree li div.hide-action div.actions 
+	{display: none;}
+#tree .ui-state-active 
+	{background: none repeat scroll 0 0 #999999;}
+#tree .ui-state-active-div 
+	{border-bottom: 2px solid #000000;}
+
+
+.edittable TD
+	{padding: 2px 5px;}
+
+.edittable TD input[type=text]
+	{width: 300px;padding: 2px 3px;border: solid 1px #DAD8D9;font-size: 14px;height: 20px;}
+.edittable TD select
+	{width: 306px;padding: 2px 0px;border: solid 1px #DAD8D9;font-size: 14px;height: 24px;}
+.edittable TD select option
+	{font-size: 14px;}	
+.edittable TD textarea
+	{width: 300px;height:100px;border: solid 1px #DAD8D9;max-width: 300px;padding: 2px 3px;}
+.edittable TD textarea.long-text
+	{width: 500px;max-width: 500px;}
+.edittable TD input[type=checkbox]
+	{margin: 2px 0 0 0;}
+
+#subfooter
+	{clear: both;height: 60px;overflow: hidden;position: relative;visibility: hidden;width: 100%;}
+
+#footer
+	{position: absolute;bottom: 0;color: #ffffff;height: 54px;margin: 25px 0 0 0;width: 100%;z-index: 10;background: url("/images/admin/bg-head.png") repeat-x #000000;}
+#footer .footer-inner
+	{width: 600px;margin: 20px auto 0 auto;}
+#footer .footer-inner A
+	{color: #ffffff;margin: 0 20px;text-decoration: none;font-size: 11px;}	
+	
+.main-table {
+    border-collapse: separate;
+    border-spacing: 4px;
+    width: 100%;
+}
+.main-table TD {
+    padding: 8px;
+    vertical-align: middle;
+}
+.main-table TR.td-header TD {
+    font-weight: bold;
+    text-align: center;
+}
+.main-table TR.td-item TD {
+    background: none repeat scroll 0 0 #F0F0F0;
+    font-size: 11px;
+}
+
+.action-link
+	{padding: 2px 0 0 30px;display: block;cursor: pointer;float: left;margin: 0 10px;font-size: 16px;margin-top: 4px;}
+.action-link div
+	{position: absolute;margin: -4px 0 0 -30px;}
+.action-link-mini
+	{padding: 2px 0 0 20px;display: block;cursor: pointer;float: left;margin: 0 10px;font-size: 12px;}
+.action-link-mini div
+	{position: absolute;margin: 2px 0 0 -20px;}
+	
+.edit-image-params {margin: 0 20px;}
+.edit-image-params TD {padding: 5px;}
+.edit-image-params input {min-width: 350px;}
+.edit-image-params textarea {min-width: 347px;min-height: 100px;max-width: 347px;max-height: 100px;}
+
+/*---------------------autocomplite--------------------------*/
+.ac_results {z-index: 9999;}
+.ac_results li {border:1px solid #DAD8D9;background: white;}
+.ac_results li:hover {background: #DAD8D9;}
+/*---------------------autocomplite--------------------------*/

@@ -1,0 +1,17 @@
+<?php
+
+
+$modulNameSpace = array(
+	'mod_text'=> 'Текстовая',
+	'mod_main'=> 'Главная',
+	'news'=> 'Новости',
+	'mod_reg'=> 'Регистрация',
+	'mod_vhod'=> 'Вход на сайт',
+	'mod_search'=> 'Поиск',
+	'actor'=> 'Актеры',
+	'producer'=> 'Режиссеры',
+	'films'=> 'Фильмы'
+);
+
+
+?>

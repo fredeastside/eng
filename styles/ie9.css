@@ -1,0 +1,8 @@
+.second-block .tabs
+{position:absolute;margin:-68px 0 0 -17px;z-index:1}
+.second-block .tabs ul li{display:inline-table;}
+.left-wrapper {display:table;}
+#content .strongsearch .selsmall{
+        width:59px;
+    }
+.second-wrapper{display:table;}

@@ -1,0 +1,31 @@
+Options -Indexes
+
+RewriteEngine on
+Options All
+RewriteBase /
+
+DirectoryIndex index.php index.html
+
+# deny most common except .php
+
+# FILES
+RewriteRule ^admin/(.*) - [L]
+RewriteRule ^images/(.*) - [L]
+RewriteRule ^phpma/(.*) - [L]
+RewriteRule ^verst/(.*) - [L]
+# MODULES
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9]+)(/)?$	/?modul=$1&url=$2&id=$3 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)/([0-9]+)/page-([0-9]+)(/)?$	/?modul=$1&url=$2&id=$3&page=$4 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/page-([0-9]+)/(.*)?$	/?modul=$1&page=$2&text=$3 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)(/)?$	/?modul=$1 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9]+)(/)?$	/?modul=$1&id=$2 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/page-([0-9]+)(/)?$	/?modul=$1&page=$2 [L]
+
+# SUBMOULES
+RewriteRule ^(.*/)([0-9a-zA-Z_-]+)(/)$ /?modul=$2&parents=$1
+RewriteRule ^([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)(/)$ /?url=$2&modul=$1
+
+
+php_value upload_max_filesize 100M
+php_value post_max_size 100M
+php_value short_open_tag 1

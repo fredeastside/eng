@@ -1,0 +1,317 @@
+/* -------------------- reset defaults -------------------- */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,a,em,img,strong,sub,sup,strong,em,ins,dl,dt,dd,ol,ul,li,form,label,table,tbody,tfoot,thead,tr,th,td
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-width: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font: 12px 'Arial', sans-serif;
+    color: #c8c8c8;
+    background: #ffffff;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-width: 0;
+}
+
+caption,td,th {
+    vertical-align: top;
+}
+
+dl,ul,ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    border: 0;
+    border-width: 0;
+    vertical-align: top;
+}
+
+ins {
+    text-decoration: underline;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+i {
+    font-style: normal;
+}
+
+input,button {
+    overflow: visible;
+}
+
+input,button,select {
+    vertical-align: middle;
+}
+
+textarea {
+    vertical-align: top;
+    height: 72px;
+    padding: 1px 2px;
+    border-width: 1px;
+}
+
+select {
+    border-width: 1px;
+}
+
+select option {
+
+}
+
+input.text {
+	color: #c8c8c8;
+    padding: 1px 2px;
+    border: 1px solid #d9d9d9;
+}
+
+input.radio {
+
+}
+
+input.checkbox {
+
+}
+
+input.file {
+    width: 100%;
+    height: 22px;
+}
+
+blockquote {
+    quotes: none;
+}
+
+blockquote:before,blockquote:after {
+    content: "";
+}
+
+q {
+    quotes: '\00AB' '\00BB' '\201E' '\201C';
+}
+
+q:before {
+    content: '\00AB';
+}
+
+q:after {
+    content: '\00BB';
+}
+
+q q:before {
+    content: '\201E';
+}
+
+q q:after {
+    content: '\201C';
+}
+
+/* ----- global ----- */
+a {
+    color: #008d54;
+    text-decoration: underline;
+}
+
+a:hover,a:active {
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 24px ;
+    margin: 0 0 0px 0;
+    font-weight: bold;
+    margin-bottom:18px;
+    text-transform:uppercase;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom:9px;
+}
+
+h3 {
+    font-size: 12px;
+}
+
+/*--------------FONT----------------------*/
+.f9 {
+    font-size: 9px;
+}
+
+.f11 {
+    font-size: 11px;
+}
+
+.f12 {
+    font-size: 12px;
+}
+
+.f14 {
+    font-size: 14px;
+}
+
+.posrel {
+    position: relative;
+}
+
+.al-c {
+    text-align: center;
+}
+
+.al-r {
+    text-align: right;
+}
+
+.va-m {
+    vertical-align: middle;
+}
+
+.f_r {
+    float: right;
+    display: block;
+    position: relative;
+}
+
+.f_l {
+    float: left;
+    display: block;
+    position: relative;
+}
+
+.upcase{
+    text-transform:uppercase;
+}
+
+/* ----- clear ----- */
+.cl {
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+
+.clf:after {
+    content: "";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+}
+.nobg {
+    background: none !important;
+}
+
+.nobd {
+    border: 0 !important;
+}
+
+.nom {
+    margin: 0 !important;
+}
+
+.mop {
+    padding: 0 !important;
+}
+
+.mopt {
+    padding-top: 0 !important;
+}
+
+/*--------------COLOR----------------------*/
+.grey {
+    color: #494949;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.black {
+    color: #000;
+}
+
+/* -------------------- MAIN -------------------- */
+#page {
+    width: 100%;
+    min-width: 960px;
+    height: 100%;
+    position: relative;
+    z-index: 5;
+}
+
+#page .lozung {
+	color: #c8c8c8;
+	font-size: 60px;
+	padding-top: 75px;
+	text-align: center;
+}
+#page .logo {
+	padding-top: 0px;
+	text-align: center;
+}
+
+#page .feedback {
+	padding-top: 56px;
+	padding-bottom: 100px;
+	text-align: center;
+}
+
+#page .feedback .link_feedback{
+	font-size: 30px;
+	margin-left:266px;
+}
+
+#page .input_big {
+	font-size: 30px;
+	width: 401px;
+	height: 45px;
+	margin-bottom: 8px;
+	color: #c8c8c8;
+	padding: 0 15px ;
+}
+
+#page .text-message{
+	color: #c8c8c8;
+	font-size: 60px;
+	text-align: center;
+}
+#page .feedback .error{
+	color: red;
+	padding-bottom: 20px; 
+}
+
+/* -------------------- MAIN -------------------- */
