@@ -16,11 +16,14 @@ $globalTemplateParam->set('filds', $filds);
 $ignor_delete_security = true;
 $globalTemplateParam->set('ignor_delete_security', $ignor_delete_security);
 
-	$absitem = new fmakeMessages();
+	$absitem = new fmakeNewsCategories();
 	$absitem->setId($request->id);
 	$absitem->tree = false;
 	
-	$actions = array('edit','delete');
+	$actions = array('active',
+	'edit',
+	'delete',
+	'move');
 	$globalTemplateParam->set('actions', $actions);
 
 # Actions
@@ -63,8 +66,10 @@ switch($request->action)
 			break;
 		
 			case 'update': // Переписать
+				
 				foreach ($_POST as $key=>$value)
 					$absitem ->addParam($key, mysql_real_escape_string($value));
+
 				$absitem -> update();
 			break;
 		
@@ -92,8 +97,8 @@ switch($request->action)
 		$form->addHidden("id", $items['id']);
 		
 		$form->addVarchar("<b>Заголовок</b>", "title", $items["title"]);
-		$form->addTextArea("Благодарственный текст", "text", $items['text']);
-		$form->addFCKEditor("Шаблон письма", "template", $items['template']);
+		$form->addCheckBox("Отобразить в меню", "in_menu", $items["inmenu"], true);
+		$form->addHidden("inmenu", $items["inmenu"]);
 		
 		$form->addSubmit("save", "Сохранить");
 		$content .= $form->printForm();

@@ -38,6 +38,9 @@ if (!$admin->isLogined())
 	$form = new utlFormEngine($modul, "/admin/index.php?modul=".$request->modul);
 	$form->formLegend = "Текстовые блоки";
 	$form->addHidden("action", 'change');
+	$form->addTinymce("<em>Главный баннер</em><br />", "configs[main_banner]",$configs->main_banner,"Главный баннер");
+	$form->addTinymce("<em>Баннер справа</em><br />", "configs[right_block]",$configs->right_block,"Баннер справа");
+	$form->addTinymce("<em>Баннер слева</em><br />", "configs[left_block]",$configs->left_block,"Баннер слева");
 	$form->addTinymce("<em>Футер</em><br />", "configs[footer]",$configs->footer,"Футер");
 	
 	$form->addSubmit("Добавить","Обновить"); 

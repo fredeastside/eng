@@ -227,11 +227,11 @@ class fmakeCore extends fmakeWhereSelector{
 	 */
 	function getUp (){
 		
-		$order = $this->getThisOrder();
+		$order = $this->getThisOrder(); 
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		$arr = $select -> addFrom($this->table) -> addWhere("`position` < '$order' ") -> addOrder('position', 'DESC')  -> addLimit(0, 1) -> queryDB();
 		$arr = $arr[0];
-		
+
 		if($arr)
 		{
 			$update = $this->dataBase->UpdateDB( __LINE__);

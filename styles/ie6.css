@@ -1,0 +1,40 @@
+.smallblocks{
+    float:left;
+    position:relative;
+    overflow:hidden;
+}
+.left-menu{
+    overflow:hidden;
+}
+
+.advertise-block .img-hoverlink .hoverlink{
+    position:absolute;
+    bottom:78%;
+}
+
+.block-background{
+    background:url("/images/smallblock-top.png") no-repeat scroll 0 0 transparent;
+    padding-top:6px;
+    zoom:1;
+}
+.blockmidleft .right-info{
+    width:190px;
+}
+#content .afisha-topic a {
+    color: #008C53;
+    font: bold 14px 'Arial';
+    margin-right: 15px;
+}
+.newsleft-block .block-name{
+    margin-bottom:14px;
+}
+.newsleft-block{
+    overflow:hidden;
+}
+.midmain-news{
+    width:549px;
+    overflow:hidden;
+}
+.main-news .right-info{
+    margin-left: 214px;
+}
