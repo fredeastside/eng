@@ -25,6 +25,16 @@ $(document).ready(function(){
 		else
 			$("#inmenu").val("0");
 	});
+        
+        if($("#in_main").val() == "0")
+		$("#in_main").removeAttr("checked");
+	
+	$("#in_main").click(function(){
+		if($(this).is(":checked"))
+			$("#main").val("1");
+		else
+			$("#main").val("0");
+	});
 	
 	
 	// ����� ����

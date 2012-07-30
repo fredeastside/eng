@@ -71,7 +71,7 @@ class fmakeSiteModule extends fmakeCore{
 				
 			if(!$items)	return;
 			foreach ($items as $key => $item) {
-					if($items[$key]['id'] == $this->id && $this->setName == $this->getName()){
+					if($items[$key]['id'] == $this->id){
 						$items[$key]['status'] = true;
 						$flag = !$flag;
 						$q = true;
@@ -535,9 +535,12 @@ class fmakeSiteModule extends fmakeCore{
 		
 		$images = new imageMaker($name);
 		$images->imagesData = $tempName;
-		$images->resize(600,480,false,$dirname,'',false);
-		$images->resize(167,115,true,$dirname,'vb',false);
+		$images->resize(640,480,false,$dirname,'',false);
+		$images->resize(201,113,true,$dirname,'vb',false);
 		$images->resize(120,80,true,$dirname,'vm',false);
 		$images->resize(70,47,true,$dirname,'mini',false);
+                
+                //$this->addParam('picture', $name);
+                //$this->update();
 	}
 }
