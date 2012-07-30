@@ -16,6 +16,16 @@ $(document).ready(function(){
 		$(this).hide();
 	})
 	
+	if($("#in_menu").val() == "0")
+		$("#in_menu").removeAttr("checked");
+	
+	$("#in_menu").click(function(){
+		if($(this).is(":checked"))
+			$("#inmenu").val("1");
+		else
+			$("#inmenu").val("0");
+	});
+	
 	
 	// ����� ����
 	function toggleMenu(obj) {

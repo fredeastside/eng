@@ -1,204 +1,112 @@
-#head .menu1 button {
-	display: inline;
-	margin: 0 0 0 8px;
+.left-menu dl{
+  display:inline-block;
+  zoom:1;
 }
-
-#head .search .two {
-	margin-left: 0px;
-	width: 75px;
-	display: inline-table;
-	float: right;
-	margin: -36px 0 0 0;
-}
-
-#head .search input {
-	border: 1px #bebebe solid;
-	border-bottom: 2px #bebebe solid;
-	height: 24px;
-}
-
-#head .search input.one {
-	width: 290px;
-	padding-top: 6px;
-	padding-left: 8px;
-	padding-right: 4px;
-}
-
-button {
-	overflow: visible;
-}
-
-.info-r .social-list span {
-	margin: 4px 0 0 3px;
-}
-
-.info-r .more {
-	width: 50%;
-}
-
-.right-block .addfilm {
-	width: 62%;
-}
-
-.vertical-scroll-container {
-	overflow: scroll;
-}
-
-.vertical-scroll-container .checkboxes div label {
-	position: static;
-	top: 0px;
-}
-
-.right-block .addfilm {
-	margin-top: 7px;
-}
-
-.second-block .tabs ul li {
-	float: left;
-	margin: 5px 2px;
-}
-
-#content .sleeve {
-	background: white;
-	border: #cbcbcb dashed 1px;
-}
-
-.addfilm {
-	width: 30.6%;
-}
-
-.comments-form input {
-	padding-top: 7px;
-	height: 23px;
-	width: 760px;
-}
-
-.width750 {
-	width: 760px;
-}
-
-.comment span.time {
-	margin-right: 3px;
-	padding-top: 0px;
-	background-position-y: 46%;
-}
-
-.second-block .tabs {
-	position: absolute;
-	margin: -64px 0 0 -18px;
-	z-index: 1
-}
-
-.img-l .counter span {
-	background: url("/images/circle.png") no-repeat scroll 0 0 transparent;
-	width: 16px;
-	display: inline-block;
-	cursor: pointer;
-	z-index: 1;
-	height: 17px;
-	margin-left: 4px;
-}
-
-.vertical-scroll-container .text2 {
-	margin-top: -3px;
-}
-
-#content .sleeve {
-	background: white;
-	border: #cbcbcb dashed 1px;
-}
-
-#head .search input.one {
-	line-height: 18px;
-}
-
-.item-main {
-	padding-bottom: 43px;
-}
-
-#content .second-wrapper {
-	margin: 35px 0 0 0;
-	border: 5px white solid;
-}
-
-.second-block .tabs ul div {
-	border: 1px #e4e4e4 solid;
-	z-index: 1;
-	background: white;
-	padding: 3px 13px 3px 11px;
-}
-
-.second-block .tabs ul div a {
-	text-decoration: none;
-	font: 14px Times New Roman;
-	font-weight: bold;
-	color: #393939;
-}
-
-.second-block .tabs ul li.active {
-	border: 5px white solid;
-	border-bottom: none;
-	margin-left: 3px;
-}
-
-.second-block .tabs ul .active div {
-	background: url("/images/treugolnik.png") no-repeat scroll 106% 100%
-		white;
-	font: 16px Times New Roman;
-	border: #cbcbcb dashed 1px;
-	padding: 3px 12px 5px 11px;
-	border-bottom: none;
-}
-
-.second-block .tabs ul .active div a {
-	font: 16px Times New Roman;
-	font-weight: bold;
-	color: #393939;
-}
-
-.second-block .tabs {
-	position: absolute;
-	margin: -69px 0 0 -20px;
-	z-index: 1
-}
-
-.act-wrapper {
-	margin: 0px 0 0 0;
-}
-
-.content-act .checkboxes .checkbox {
-	display: inline-block;
-	float: none;
-	margin-top: 0px;
-	height: 20px;
-	line-height: 20px;
-	position: relative;
-	bottom: -2px;
-}
-
-.comments-form .captcha input {
-	line-height: 21px;
-	padding: 0px 0 0 0;
-	position: relative;
-	top: -1px;
-}
-
-.social-block {
-	overflow: hidden;
-	position: absolute;
-}
-#content .strongsearch .selsmall{
-        width:56px;
-    }
-    .search-block .info-r .more{
-       overflow: hidden;
-       width:21%;
-    }
-    .strongsearch .second-row .small{
-        margin-right:5px;
-    }
-.strongsearch .rovno2-2{
-    margin-left:20px;
-    width:80px;
+.left-menu dl.active{
     display:inline-block;
+    zoom:1;
+}
+.main-news .left-info .moreinfo{
+    margin-top:14px;
+}
+.events-all{
+    zoom:1;
+    font:12px/14px 'Arial';
+}
+.smallblocks{
+    float:left;
+    width:820px;
+}
+.main-news{
+    width:590px;
+}
+
+.midmain-news{
+    width:545px;
+    overflow:hidden;
+}
+#content ul{
+    list-style-position: outside;
+    margin-left:6px;
+}
+#content ul li{
+    margin-left:12px;
+}
+#content .right-info ul li{
+    margin-left: 0;
+}
+#content .right-info ul{
+    margin-left: 16px;
+}
+.blockmidleft .events-all{
+    
+}
+.blockmid .block-name{
+    margin-top:0px;
+}
+.main-news .right-info{
+    margin-left: 214px;
+}
+.emailpopup{
+    display:none;
+    position:absolute;
+    background: url("/images/emailpopup.png") no-repeat scroll 0 0 transparent;
+    width:237px;
+    height:97px;
+    z-index:10000;
+    padding-left:25px;
+    padding-top:25px;
+    right:10px;
+    top:30px;
+}
+.emailpopup .inputfield{
+    position:absolute;
+    width:151px;
+    margin-left:28px;
+}
+.emailpopup .inputfield input{
+    width:139px;
+    height:17px;
+    border:1px solid #d7d7d7;
+    padding-left:10px;
+    padding-top:4px;
+    color:#8a8a8a;
+    font:10px/14px 'Arial';
+}
+.emailpopup .inputnames{
+    color:#8a8a8a;
+    font:11px/14px 'Arial';
+}
+.emailpopup .inputnames span{
+    margin-top:5px;
+    display:inline-block;
+}
+.emailpopup span.emailname{
+    margin-top:5px;
+}
+.emailpopup .inputfield textarea{
+    padding-left:10px;
+    width:137px;
+    max-width:137px;
+    min-width:137px;
+    resize:none;
+    height:35px;
+    min-height:35px;
+    max-height:35px;
+    border:1px solid #d7d7d7;
+    margin-top:-3px;
+    color:#8a8a8a;
+    font:10px/14px 'Arial';
+    padding-top:7px;
+}
+.emailpopup .emailsendpopup{
+    position:absolute;
+    right:32px;
+    bottom:15px;
+    color:#8a8a8a;
+    font:11px/14px 'Arial';
+}
+.emailpopup .emailsendpopup a{
+    color:#8a8a8a;
+    font:11px/14px 'Arial';
 }

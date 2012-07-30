@@ -33,6 +33,7 @@ $modul = new fmakeSiteModule();
 //printAr($_COOKIE);
 //добавляем каталог к основным модулям
 $menu = $modul->getAllForMenu(0, true,$q=false,$flag=true,true);
+//printAr($menu);
 $globalTemplateParam->set('menu',$menu);
 
 $modul->getPage($request -> getEscape('modul') ,$twig);

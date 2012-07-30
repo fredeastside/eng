@@ -8,17 +8,15 @@
 	<link rel="stylesheet" type="text/css" href="/styles/main.css" />
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
         <!--[if lte IE 7]>
-                <link rel="stylesheet" type="text/css" href="/styles/ie.css" />
-                <![endif]-->
-        <!--[if lte IE 6]>
-                <link rel="stylesheet" type="text/css" href="/styles/ie6.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/ie.css" />
         <![endif]-->
-        <!--[if lte IE 8]>
-                 <script type="text/javascript" src="/js/curvycorners.js"></script>
+        <!--[if lte IE 6]>
+        <link rel="stylesheet" type="text/css" href="/styles/ie6.css" />
         <![endif]-->
 	<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="/js/fieldFocus.js"></script>
 	<script type="text/javascript" src="/js/scripts.js"></script>
+    <script src="/js/popup.js"  type="text/javascript"></script>
 	
 	[[raw]]
 	<script>
