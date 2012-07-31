@@ -28,18 +28,31 @@ switch ($request->action){
 		break;
 }
 
-
+//printAr($_REQUEST);
 $modul = new fmakeSiteModule();
 //printAr($_COOKIE);
-$modul->getPage($request -> getEscape('modul') ,$twig);
+$url = $request -> getEscape('url') ? $request -> getEscape('url') : $request -> getEscape('modul');
+$url = explode('/', $url);
+$url = $url[0];
+
+$modul->getPage($request -> getEscape('modul') , $twig, $url);
 //добавляем каталог к основным модулям
 $menu = $modul->getAllForMenu(0, true,$q=е,$flag=true,true);
 //printAr($menu);
 $globalTemplateParam->set('menu',$menu);
-
+$globalTemplateParam->set('url',$url);
 $globalTemplateParam->set('modul',$modul);
 
-//printAr($_POST);
+$news_obj = new fmakeNews();
+
+$main_new = $news_obj->getMainNew();
+//printAr($main_new);
+$news = $news_obj->getNews();
+//printAr($main_new);
+$news_url = $news_obj->getUrlNews();
+$globalTemplateParam->set('news_url',$news_url);
+$globalTemplateParam->set('main_new',$main_new);
+$globalTemplateParam->set('news',$news);
 
 $modul->template = "base/main.tpl";
 

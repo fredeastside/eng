@@ -4,7 +4,7 @@
                         <div class="bottom-foot">
                             <div class="mid-foot">
                                 <a href="#"><span class="logo"></span></a>
-                                <div class="email">Напишите нам <a href="#">{}</a></div>
+                                <div class="email">Напишите нам <a href="#"></a></div>
                                 <div class="nav-menu">
                                 <dl>
                                     <dt>Образование</dt>

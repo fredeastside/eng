@@ -1,16 +1,22 @@
 						<div class="nav-left">
 							[[for item in menu]]
+							[[if not(item.status)]]
                             <dl>
                                 <dt><a href="[[if item.index == 1]]/[[else]]/{item.redir}/[[endif]]">{item.caption}</a></dt>
                             </dl>
-                            <!--dl class="active">
-                                <dt><a href="#">Происшествия</a></dt>
-                                <dd><a href="#">ДТП</a></dd>
-                                <dd><a href="#">Политика</a></dd>
-                                <dd><a href="#">Образование</a></dd>
-                                <dd class="last"><a href="#">Город</a></dd>
+							[[else]]
+							<dl class="active">
+								<dt><a href="[[if item.index == 1]]/[[else]]/{item.redir}/[[endif]]">{item.caption}</a></dt>
+								[[if item.child]]
+									[[for child_item in item.child]]
+									<dd>
+										<a href="/{item.redir}/{child_item.redir}/" [[if loop.last]]class="last"[[endif]]>{child_item.name}</a>
+									</dd>
+									[[endfor]]
+								[[endif]]
                             </dl>
-                            <dl>
+							[[endif]]
+                            <!--dl>
                                 <dt><a href="#">Политика</a></dt>
                             </dl>
                             <dl>

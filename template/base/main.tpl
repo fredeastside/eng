@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div id="head">
-                    <a href="#"><span id="logo"></span></a>
+                    <a href="/"><span id="logo"></span></a>
                     <div class="nav-top">
                         <span class="share"><a id="link98" href="javascript:display('show', 98)">Поделиться</a></span>
                         <span class="sitemap"><a href="#">Карта сайта</a></span>
@@ -52,29 +52,7 @@
 
                     </div>
                     <div class="right-block">
-                        <h1>Главные новости</h1>
-                        <div class="main-news">
-                            <div class="left-info">
-                                <img alt="img1" src="/images/img.png"/>
-                                <div class="left-text">
-                                    <div class="headlink"><a href="#">Ночь в музее 2012 в Энгельсе</a></div>
-                                    <span>В Энгельсе всего один музей принял участие в акции «Ночь музеев» — краеведческий. С одной стороны это хорошо.</span>
-                                    <div class="moreinfo"><a href="#">Подробнее</a></div>
-                                </div>
-                            </div>
-                            <div class="right-info">
-                                <ul>
-                                    <li><a href="#">Назначены судьи Энгельсского районного суда</a></li>
-                                    <li><a href="#">Силовики искали взрывное устройство на мосту <br/> Саратов-Энгельс</a></li>
-                                    <li><a href="#">Условные террористы захватили школу в Энгельсе</a></li>
-                                    <li><a href="#">Прокуратура обжаловала приговор по делу Елены Таутиновой</a></li>
-                                    <li><a href="#">Администрация решила потратить казенные деньги на свои новые окна</a></li>
-                                    <li><a href="#">Энгельсский шаолинь на Казантипе с извинениями бросался на людей</a></li>
-                                    <li><a href="#">Назначены судьи Энгельсского районного суда</a></li>
-                                    <li><a href="#">Силовики искали взрывное устройство на мосту</a></li>
-                                </ul>
-                            </div>    
-                        </div>
+						[[ include TEMPLATE_PATH ~ "blocks/news.tpl"]]
                         <div class="blockmid">
                             <h2 class="block-name"><em>Происшествия</em></h2>
                             <div class="cl"></div>

@@ -96,7 +96,10 @@ switch($request->action)
 		$form->addHidden("action", (($_GET['action'] == 'new')?'insert':'update'));
 		$form->addHidden("id", $items['id']);
 		
-		$form->addVarchar("<b>Заголовок</b>", "title", $items["title"]);
+		$form->addVarchar("<b>Название</b>", "name", $items["name"]);
+		$form->addVarchar("<i>Заголовок</i>", "title", $items["title"]);
+		$form->addVarchar("<i>Описание</i>", "description", $items["description"]);
+		$form->addVarchar("<i>URL</i>", "redir", $items["redir"]);
 		$form->addCheckBox("Отобразить в меню", "in_menu", $items["inmenu"], true);
 		$form->addHidden("inmenu", $items["inmenu"]);
 		
