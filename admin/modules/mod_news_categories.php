@@ -102,7 +102,7 @@ switch($request->action)
 		$form->addVarchar("<i>URL</i>", "redir", $items["redir"]);
 		$form->addCheckBox("Отобразить в меню", "in_menu", $items["inmenu"], true);
 		$form->addHidden("inmenu", $items["inmenu"]);
-		
+		$form->addFCKEditor("Текст", "text", $items["text"]);
 		$form->addSubmit("save", "Сохранить");
 		$content .= $form->printForm();
 		

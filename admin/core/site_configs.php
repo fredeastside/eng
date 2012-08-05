@@ -28,8 +28,9 @@ if (!$admin->isLogined())
 	$form->formLegend = "Основные параметры";
 	$form->addHidden("action", 'change');
 	$form->addVarchar("<em><b>Телефон</b></em>", "configs[phone1]",$configs->phone1,50,false,"Используется на основных страницах сайта и в футере");
-	//$form->addVarchar("<em>Телефон(второй)</em>", "configs[phone2]",$configs->phone2,50,false,"Используется на основных страницах сайта и в футере");
 	$form->addVarchar("<em><b>Емайл</b></em>", "configs[email]",$configs->email,50,false,"Используется на основных страницах сайта и в футере, а так же для рассылки и оповещения с сайта");
+        
+        $form->addVarchar("<em>Количество новостей<em>", "configs[news_count]",$configs->news_count,20,false,"Количество новостей, выводимых на странице");
 	
 	$form->addSubmit("Добавить","Обновить");
 	$content = $form->printForm();

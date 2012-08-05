@@ -85,6 +85,30 @@ class fmakeSiteModule extends fmakeCore {
 				if ($flag)
 					unset($items[$key]['status']);
 
+			}
+		}
+		return $items;
+	}
+        
+        function getAllForMenuSite($parent = 0, $active = false, &$q, &$flag, $inmenu, $acces = false, $level = 0, $level_vlojennost = false, $type = false) {
+		if ($level != $level_vlojennost || !$level_vlojennost) {
+			$items = $this->getChilds($parent, $active, $inmenu, $type);
+
+			if (!$items)
+				return;
+			foreach ($items as $key => $item) {
+				if ($items[$key]['id'] == $this->id) {
+					$items[$key]['status'] = true;
+					$flag = !$flag;
+					$q = true;
+				}
+
+				if ($flag)
+					$items[$key]['status'] = &$q;
+				$items[$key]['child'] = $this->getAllForMenu($item['id'], $active, $q, $flag, $inmenu, $acces, $level++, $level_vlojennost, $type);
+				if ($flag)
+					unset($items[$key]['status']);
+
 				if ($items[$key]['file'] == 'news') {
 					$cat_obj = new fmakeNewsCategories();
 					$cat_obj->order = "position";

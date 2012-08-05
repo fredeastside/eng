@@ -30,6 +30,7 @@
 
                 </div>
                 <div id="content">  
+                    [[block content]]
                     <div class="advertise-block">
                         <div class="img-hoverlink">
                             <div class="hoverlink"><a href="#">Спасатели обнаружили обломки сбитого Сирией турецкого ...</a></div>
@@ -526,6 +527,7 @@
                         </div>
 
                     </div>
+                    [[endblock]]
                 </div>
                 <div class="cl"></div>
                 <!-- CONTENT -->

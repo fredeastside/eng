@@ -37,7 +37,7 @@ $url = $url[0];
 
 $modul->getPage($request -> getEscape('modul') , $twig, $url);
 //добавляем каталог к основным модулям
-$menu = $modul->getAllForMenu(0, true,$q=е,$flag=true,true);
+$menu = $modul->getAllForMenuSite(0, true,$q=е,$flag=true,true);
 //printAr($menu);
 $globalTemplateParam->set('menu',$menu);
 $globalTemplateParam->set('url',$url);
@@ -45,13 +45,10 @@ $globalTemplateParam->set('modul',$modul);
 
 $news_obj = new fmakeNews();
 
-$main_new = $news_obj->getMainNew();
-//printAr($main_new);
-$news = $news_obj->getNews();
+$news = $news_obj->getNews(true);
 //printAr($main_new);
 $news_url = $news_obj->getUrlNews();
 $globalTemplateParam->set('news_url',$news_url);
-$globalTemplateParam->set('main_new',$main_new);
 $globalTemplateParam->set('news',$news);
 
 $modul->template = "base/main.tpl";

@@ -22,7 +22,7 @@ class fmakeNews extends fmakeCore {
         $images->imagesData = $tempName;
         $images->resize(640, 480, false, $dirname, '', false);
         $images->resize(201, 113, true, $dirname, 'vb', false);
-        $images->resize(120, 80, true, $dirname, 'vm', false);
+        $images->resize(139, 85, true, $dirname, 'vm', false);
         $images->resize(70, 47, true, $dirname, 'mini', false);
 
         $this->addParam('picture', $name);
@@ -49,24 +49,7 @@ class fmakeNews extends fmakeCore {
 		return $date;
 	}
 	
-	public function getMainNew(){
-		$select = $this->dataBase->SelectFromDB( __LINE__);
-
-		$select -> addWhere("active='1'");
-		
-		$select -> addWhere("main='1'");
-		
-		$select = $select -> addFrom($this->table) -> queryDB();
-		
-		$category = $this->getNewsCategory($select[0]['id_category']);
-		
-		$select[0]['cat_name'] = $category['name'];
-		$select[0]['cat_redir'] = $category['redir'];
-		
-		return $select[0];
-	}
-	
-	public function getNews(){
+	public function getNews($main = false, $offset = 0, $limit = 9){
 		
 		$this->order = "a.date";
 		
@@ -74,6 +57,7 @@ class fmakeNews extends fmakeCore {
 		
 		$select->addFild("a.id as id_new, 
 			a.name as name_new, 
+                        a.active,
 			a.title as title_new, 
 			a.description as description_new, 
 			a.redir as redir_new, 
@@ -93,11 +77,12 @@ class fmakeNews extends fmakeCore {
 		
 		$select -> addWhere("a.active='1'");
 		
-		$select -> addWhere("a.main='0'");
+                if($main)
+                    $select -> addWhere("a.main='1'");
 		
 		$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'DESC'));
 		
-		$select->addLimit(0, 8);
+		$select->addLimit($offset, $limit);
 		
 		return $select -> addFrom($this->table." as a Left join news_categories as b on a.id_category=b.id") -> queryDB();
 	}
@@ -132,6 +117,56 @@ class fmakeNews extends fmakeCore {
 		return $select[0]['redir'];
 		
 	}
+        
+        public function getPaginationPages($nums){
+            $select = $this->dataBase->SelectFromDB( __LINE__);
+            $select->addFild("COUNT(*) AS cnt");
+            $select -> addWhere("active='1'");
+            $select = $select -> addFrom($this->table) -> queryDB();
+            if($select)
+                $count = $select[0]['cnt'];
+            
+            $pages = ceil($count/$nums);
+	
+            return $pages;
+        }
+        
+        public function getPaginationMenu($paginator, $pages){
+            $pag_menu = "";
+            
+            if($pages != 1){
+                
+                for($i = 1 ; $i <= $pages; $i++){
+                        if($i == 1 && $paginator != $i)
+                            $pag_menu .= '<span class="prev"><a href="page-'.($paginator-1).'"><< Предыдущая</a></span><span><a href="page-'.$i.'">'.$i.'</a></span>';
+                        elseif($i == $pages && $paginator != $i)
+                            $pag_menu .= '<span><a href="page-'.$i.'">'.$i.'</a></span><span class="next"><a href="page-'.($paginator+1).'">Следующая >></a></span>';
+                        elseif($i == $paginator)
+                                $pag_menu .= '<span>'.$i.'</span>';
+                        else
+                                $pag_menu .= '<span><a href="page-'.$i.'">'.$i.'</a></span>';
+                }
+            }
+            
+            return $pag_menu;
+        }
+        
+        public function getItemByRedir($redir, $from = false){
+            if($from)
+                $this->table = 'news_categories';
+            
+            $select = $this->dataBase->SelectFromDB( __LINE__);
+            $where = "redir = '%s'";
+            $where = sprintf($where, mysql_real_escape_string($redir));
+            $select -> addWhere($where);
+            $select = $select -> addFrom($this->table) -> queryDB();
+            $this->table = 'news';
+            
+            if($select){
+                $select[0]['cat'] = $this->getNewsCategory($select[0]['id_category']);
+                return $select[0];
+            }
+        }
 
 }
 

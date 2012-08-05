@@ -437,6 +437,7 @@ pre{
     margin-top:10px;
     margin-bottom:20px;
     width:561px;
+    min-height:270px;
 }
 .main-news .left-info{
     float:left;
@@ -867,6 +868,7 @@ pre{
 }
 .paragraphtoimage{
     margin-top:-3px;
+    min-height: 85px;
 }
 .nightclub .item-img{
     width:235px;

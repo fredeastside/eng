@@ -123,7 +123,7 @@ switch ($request->action) {
 		
         $form->addVarchar("Дата (ДД.ММ.ГГГГ)", "date", $absitem->setDate($items['date']));
         if($items['picture'])
-            $form->addHtml("", "<tr><td colspan='2'><img src='/{$absitem->fileDirectory}{$items['id']}/{$items['picture']}' /></td></tr>");
+            $form->addHtml("", "<tr><td colspan='2'><img src='/{$absitem->fileDirectory}{$items['id']}/vm{$items['picture']}' /></td></tr>");
         $form->addFile("Фото:", "picture",$text = false);
         $form->addTextArea("Анонс", "anons", $items["anons"], 50, 50);
         
