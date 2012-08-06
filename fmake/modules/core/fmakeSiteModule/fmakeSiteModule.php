@@ -115,6 +115,13 @@ class fmakeSiteModule extends fmakeCore {
 					$cat = $cat_obj->getAll(true);
 					$items[$key]['child'] = $cat;
 				}
+				
+				if ($items[$key]['file'] == 'incidents') {
+					$cat_obj = new fmakeIncidentsCategories();
+					$cat_obj->order = "position";
+					$cat = $cat_obj->getAll(true);
+					$items[$key]['child'] = $cat;
+				}
 			}
 		}
 		return $items;
