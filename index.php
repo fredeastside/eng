@@ -55,6 +55,12 @@ $incident_url = $incidents_obj->getUrlIncident();
 $globalTemplateParam->set('incident_url',$incident_url);
 $globalTemplateParam->set('incidents',$incidents);
 
+$meets_obj = new fmakeMeets();
+$meets = $meets_obj->getMeets(true, 0, 2);
+$meet_url = $meets_obj->getUrlMeet();
+$globalTemplateParam->set('meet_url',$meet_url);
+$globalTemplateParam->set('meets',$meets);
+
 $modul->template = "base/main.tpl";
 
 if($modul->file){

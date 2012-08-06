@@ -628,6 +628,7 @@ pre{
 .background-mid .searchlink{
     position:absolute;
     bottom:0px;
+    right: 20px;
 }
 .background-mid .news-item{
     margin-bottom:30px;

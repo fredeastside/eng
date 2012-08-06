@@ -59,30 +59,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <div class="blockmidleft">
-                                            <h2 class="block-name"><em>Ближайшие события города</em></h2>
-                                            <div class="cl"></div>
-
-                                            <div class="block-background">
-                                                <div class="background-bottom">
-                                                    <div class="background-mid">
-                                                        <div class="searchlink"><a href="#">Поиск событий</a></div>
-                                                        <div class="moreinfo lastmore"><a href="#">Подробнее</a></div>
-                                                        <div class="news-item">
-                                                            <div class="header"><a href="#">Путин помирит Ближний Восток</a></div>
-                                                            <div class="item-text">В Польшу для участия в новых драках едут несколько сотен российских хулиганов, которые намерены мстить за нападение на болельщиков, сообщил источник в одной из московских околофутбольных группировок.</div>
-                                                            <div class="moreinfo youaresospecial"><a href="#">Подробнее</a></div>
-                                                        </div>
-                                                        <div class="news-item">
-                                                            <div class="header"><a href="#">В Новосибирске аварийно сел самолет</a></div>
-                                                            <div class="item-text">В новосибирском аэропорту "Толмачево" совершил аварийную посадку Boeing 757 авиакомпании "ВИМ-Авиа", летевший из Екатеринбурга в Ханой. Как сообщается на сайте Западно-Сибирского управления на транспорте СК РФ, инцидент произошел около 6 утра по местному времени.</div>
-                                                        </div> 
-                                                        <div class="cl"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                        [[ include TEMPLATE_PATH ~ "blocks/meets.tpl"]]
                                         <div class="blockmidleft sosedbackground">
                                             <h2 class="block-name"><em>Места</em></h2>
                                             <div class="cl"></div>

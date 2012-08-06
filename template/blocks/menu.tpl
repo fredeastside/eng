@@ -9,8 +9,8 @@
 								<dt><a href="[[if item.index == 1]]/[[else]]/{item.redir}/[[endif]]">{item.caption}</a></dt>
 								[[if item.child]]
 									[[for child_item in item.child]]
-									<dd>
-										<a href="/{item.redir}/{child_item.redir}/" [[if loop.last]]class="last"[[endif]]>{child_item.name}</a>
+									<dd [[if loop.last]]class="last"[[endif]]>
+										<a href="/{item.redir}/{child_item.redir}/">{child_item.name}</a>
 									</dd>
 									[[endfor]]
 								[[endif]]

@@ -122,6 +122,14 @@ class fmakeSiteModule extends fmakeCore {
 					$cat = $cat_obj->getAll(true);
 					$items[$key]['child'] = $cat;
 				}
+                                
+                                if ($items[$key]['file'] == 'meets') {
+					$cat_obj = new fmakeMeetCategories();
+					$cat_obj->order = "position";
+					$cat = $cat_obj->getAll(true);
+                                        //printAr($cat);
+					$items[$key]['child'] = $cat;
+				}
 			}
 		}
 		return $items;
