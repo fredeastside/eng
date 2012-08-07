@@ -15,33 +15,74 @@
         <span>/</span>
         <!--Афиша города-->
         [[for bread_crumb in breadcrubs]]
-	    [[if loop.last]]
-                {bread_crumb.caption}
-	    [[else]]
-                <a href="/{bread_crumb.redir}/{bread_crumb.id}/">{bread_crumb.caption}</a> <span>/</span>
-	    [[endif]]
+        [[if loop.last]]
+        {bread_crumb.caption}
+        [[else]]
+        <a href="/{bread_crumb.redir}/{bread_crumb.id}/">{bread_crumb.caption}</a> <span>/</span>
+        [[endif]]
         [[endfor]]
     </div>
-    
-    <h1>{modul_params.caption}</h1><br/>
-    
-    [[if meets]]
-        [[for item in meets]]
-            <div class="event-header">
-                <a href="/[[if not(url)]]{meet_url}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_meet}/">{item.name_meet}</a>
-            </div>
-            [[if item.picture]]<img class="event-image" src="/images/sitemodul_image/meets/{item.id_meets}/vm{item.picture}" alt="image">[[endif]]
-            <p class="paragraphtoimage">
-                {item.anons|raw}
-            </p>
+
+    <h1>{modul_params.caption}</h1>
+
+    [[if categories]]
+    <div class="afisha-topic">
+        [[for item in categories]]
+        <a href="/[[if not(url)]]{meet_url}[[else]]{url}[[endif]]/{item.redir}/">{item.name}</a>
         [[endfor]]
-        
-        [[if pag_menu]]
-            <div class="pager" align="center">
-                {pag_menu|raw}
+    </div>
+    [[endif]]
+
+    <div class="midbackground">
+        <div class="midbackbot">
+            <div class="midbackmid townback">
+                <h3>Поиск событий города</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="action" value="search" />
+                    <div class="inputtext">
+                        <input name="search_string" value="" />
+                        [[if categories]]
+                        <select name="event_category" onchange="">
+                            <option valie="">Выберите категорию</option>
+                            [[for item in categories]]
+                            <option value="{item.id}">{item.name}</option>
+                            [[endfor]]
+                        </select>
+                        [[endif]]
+
+                        <select name="event_date" onchange="">
+                            <option value="">Выберите дату</option>
+                            <option value="today">Сегодня</option>
+                            <option value="yersterday">Вчера</option>
+                            <option value="week">Неделя</option>
+                            <option value="month">Месяц</option>
+                        </select>
+                        <a href="#" class="search" onclick="setSearch(); return false;">Найти</a>
+                        <br/>
+                        <a href="#" class="selectbydate">Выбрать по числу</a>
+                    </div>                        
+                </form>
             </div>
-        [[endif]]
-        
+        </div>
+    </div>
+
+    [[if meets]]
+    [[for item in meets]]
+    <div class="event-header">
+        <a href="/[[if not(url)]]{meet_url}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_meet}/">{item.name_meet}</a>
+    </div>
+    [[if item.picture]]<img class="event-image" src="/images/sitemodul_image/meets/{item.id_meets}/vm{item.picture}" alt="image">[[endif]]
+    <p class="paragraphtoimage">
+        {item.anons|raw}
+    </p>
+    [[endfor]]
+
+    [[if pag_menu]]
+    <div class="pager" align="center">
+        {pag_menu|raw}
+    </div>
+    [[endif]]
+
     [[endif]]
 
 </div>

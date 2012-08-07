@@ -167,6 +167,22 @@ class fmakeMeets extends fmakeCore {
                 return $select[0];
             }
         }
+        
+        public function setSearch($search_string, $category = false, $date = false){
+            $select = $this->dataBase->SelectFromDB( __LINE__);
+            
+            if($serach_string)
+                $select->addWhere();
+            
+            if($category)
+                $select->addWhere();
+            
+            if($date){
+                $date = $this->getDate($date);
+                $select->addWhere();
+            }
+                
+        }
 
 }
 

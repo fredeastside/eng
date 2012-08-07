@@ -2,6 +2,12 @@
         $breadcrubs = $modul->getBreadCrumbs($modul->id);
         $meets_obj = new fmakeMeets();
         
+        $cat_obj = new fmakeMeetCategories();
+        $cat = $cat_obj->getAll(true);
+        
+        $globalTemplateParam->set('categories', $cat);
+        //printAr($request->modul);
+        
         if($request -> getEscape('url')){
             $url_arr = explode('/', $request -> getEscape('url'));
             
