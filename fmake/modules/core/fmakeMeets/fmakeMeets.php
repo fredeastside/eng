@@ -142,20 +142,23 @@ class fmakeMeets extends fmakeCore {
             return $pages;
         }
         
-        public function getPaginationMenu($paginator, $pages){
-            $pag_menu = "";
+        public function getPaginationMenu($paginator, $pages, $filter = false){
+            $pag_menu = ""; 
+			global $request;
+			
+			$char = $filter ? "?" : "";
             
             if($pages != 1){
                 
                 for($i = 1 ; $i <= $pages; $i++){
                         if($i == 1 && $paginator != $i)
-                            $pag_menu .= '<span class="prev"><a href="page-'.($paginator-1).'"><< Предыдущая</a></span><span><a href="page-'.$i.'">'.$i.'</a></span>';
+                            $pag_menu .= '<span class="prev"><a href="page-'.($paginator-1).$char.$request->writeFilter().'"><< Предыдущая</a></span><span><a href="page-'.$i.$char.$request->writeFilter().'">'.$i.'</a></span>';
                         elseif($i == $pages && $paginator != $i)
-                            $pag_menu .= '<span><a href="page-'.$i.'">'.$i.'</a></span><span class="next"><a href="page-'.($paginator+1).'">Следующая >></a></span>';
+                            $pag_menu .= '<span><a href="page-'.$i.$char.$request->writeFilter().'">'.$i.'</a></span><span class="next"><a href="page-'.($paginator+1).$char.$request->writeFilter().'">Следующая >></a></span>';
                         elseif($i == $paginator)
                                 $pag_menu .= '<span>'.$i.'</span>';
                         else
-                                $pag_menu .= '<span><a href="page-'.$i.'">'.$i.'</a></span>';
+                                $pag_menu .= '<span><a href="page-'.$i.$char.$request->writeFilter().'">'.$i.'</a></span>';
                 }
             }
             
@@ -236,7 +239,11 @@ class fmakeMeets extends fmakeCore {
         }
         
         public function getRows(){
-            $str = "SELECT FOUND_ROWS()";
+			$select = $this->dataBase->SelectFromDB( __LINE__);
+            $str = "SELECT FOUND_ROWS() as count";
+			$result = $select->setQuery($str);
+			if($result)
+				return $result[0]['count'];
         }
 
 }

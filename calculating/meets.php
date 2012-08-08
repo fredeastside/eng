@@ -11,21 +11,23 @@
         
         $globalTemplateParam->set('categories', $cat);
         
-        switch($request->action){
-            case 'search': 
-                    $search_string = !empty($_REQUEST['search_string']) ? strip_tags($_REQUEST['search_string']) : null;
-                    $category = !empty($_REQUEST['event_category']) ? strip_tags($_REQUEST['event_category']) : null;
-                    $date = !empty($_REQUEST['event_date']) ? strip_tags($_REQUEST['event_date']) : null;
-                    
+        switch($request->getFilter('action')){
+            case 'search':
+                    $search_string = $request->getFilter('search_string') ? strip_tags($request->getFilter('search_string')) : null;
+                    $category = $request->getFilter('event_category') ? strip_tags($request->getFilter('event_category')) : null;
+                    $date = $request->getFilter('event_date') ? strip_tags($request->getFilter('event_date')) : null;
+                    printAr($category);
                     $meets = $meets_obj->setSearch($search_string, $category, $date, $offset, $limit);
-                    $pages = ceil(count($meets)/$limit);
+					$count = $meets_obj->getRows();
+					//printAr($count);
+                    $pages = ceil($count/$limit);
                     if ($page < 1) {
                             $page = 1;
                     }
                     elseif ($page > $pages) {
                             $page = $pages;
                     }
-                    $pag_menu = $meets_obj->getPaginationMenu($page, $pages);
+                    $pag_menu = $meets_obj->getPaginationMenu($page, $pages, true);
                     $globalTemplateParam->set('pag_menu', $pag_menu);
                     $globalTemplateParam->set('meets', $meets);
                     $globalTemplateParam->set('breadcrubs', $breadcrubs);

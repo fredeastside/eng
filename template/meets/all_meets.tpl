@@ -37,12 +37,12 @@
         <div class="midbackbot">
             <div class="midbackmid townback">
                 <h3>Поиск событий города</h3>
-                <form action="" method="post" id="search">
-                    <input type="hidden" name="action" value="search" />
+                <form action="" method="get" id="search">
+                    <input type="hidden" name="filter[action]" value="search" />
                     <div class="inputtext">
-                        <input name="search_string" value="" />
+                        <input name="filter[search_string]" value="" />
                         [[if categories]]
-                        <select name="event_category" onchange="">
+                        <select name="filter[event_category]" onchange="">
                             <option value="">Выберите категорию</option>
                             [[for item in categories]]
                             <option value="{item.id}">{item.name}</option>
@@ -50,7 +50,7 @@
                         </select>
                         [[endif]]
 
-                        <select name="event_date" onchange="">
+                        <select name="filter[event_date]" onchange="">
                             <option value="">Выберите дату</option>
                             <option value="today">Сегодня</option>
                             <option value="yersterday">Вчера</option>

@@ -16,14 +16,15 @@ RewriteRule ^verst/(.*) - [L]
 # MODULES
 
 
-RewriteRule ^([0-9a-zA-Z_-]+)(/)?$ /?modul=$1 [L]
-RewriteRule ^([0-9a-zA-Z_-]+)/page-([0-9]+)(/)?$ /?modul=$1&page=$2 [L]
+#RewriteRule ^([0-9a-zA-Z_-]+)(/)?$ /?modul=$1 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)(/)?$ /?%{QUERY_STRING}&modul=$1 [L]
+RewriteRule ^([0-9a-zA-Z_-]+)/page-([0-9]+)(/)?$ /?%{QUERY_STRING}&modul=$1&page=$2 [L]
 
 
 
 # SUBMOULES
-RewriteRule ^(.*/)([0-9a-zA-Z_-]+)(/)$ /?modul=$2&url=$1 [L]
-RewriteRule ^(.*/)([0-9a-zA-Z_-]+)/page-([0-9]+)(/)?$ /?modul=$2&url=$1&page=$3 [L] 
+RewriteRule ^(.*/)([0-9a-zA-Z_-]+)(/)$ /?%{QUERY_STRING}&modul=$2&url=$1 [L]
+RewriteRule ^(.*/)([0-9a-zA-Z_-]+)/page-([0-9]+)(/)?$ /?%{QUERY_STRING}&modul=$2&url=$1&page=$3 [L] 
 #RewriteRule ^(.*/)([0-9a-zA-Z_-]+)(/)(.*)$ /?modul=$2&url=$1
 #RewriteRule ^([0-9a-zA-Z_-]+)/([0-9a-zA-Z_-]+)(/)$ /?url=$2&modul=$1
 

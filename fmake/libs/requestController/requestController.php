@@ -1,6 +1,8 @@
 <?PHP
 
 class requestController{
+	public $filter = 'filter';
+	
 	
 	public function __isset($key){
  		return true;
@@ -13,12 +15,80 @@ class requestController{
 	
 	
 	
+	function getEscape($key){
+		return mysql_real_escape_string($_REQUEST[$key]);
+	}
+	
 	function getEscapeVal($val){
 		return mysql_real_escape_string($val);
 	}
 	
-	function getEscape($key){
-		return isset($_REQUEST[$key]) ? mysql_real_escape_string($_REQUEST[$key]) : false;
+	function getFilterEscape($name){
+		return mysql_real_escape_string($_REQUEST[$this -> filter][$name]);
+	}	
+
+	function getFilter($name){
+		return $_REQUEST[$this -> filter][$name];
+	}
+	
+	function setFilter($name,$val){
+		$_REQUEST[$this -> filter][$name] = $val;
+	}
+	
+	function getFilterArr(){
+		$filter = $_REQUEST[$this -> filter];
+		
+
+		if($arg = func_get_args()){
+			foreach ($arg AS $notFilter)
+			{
+				unset($filter[$notFilter]);
+			}
+		}
+		
+		// удаляем пустые
+		if($filter){
+			foreach ($filter AS $name => $value)
+			{
+				if($value === false){
+					unset($filter[$name]);
+				}
+			}
+		}
+		
+		return $filter;
+	}
+	
+	function writeFilter(){
+	
+		$filter = $_REQUEST[$this -> filter];
+		
+		/*if($notFilter){
+			foreach ($notFilter as $not){
+				unset($filter[$not]);
+			}
+		}*/
+		
+		if($arg = func_get_args()){
+			foreach ($arg AS $notFilter)
+			{
+				unset($filter[$notFilter]);
+			}
+		}
+		
+		$str = '';
+		$i=1;
+		if($filter){
+			foreach ($filter as $name=>$value){
+				if($value !== false && $i++ == 1){
+					$str .= "filter[{$name}]={$value}";
+				}else if($value !== false){
+					$str .= "&filter[{$name}]={$value}";
+				}
+			}
+		}
+		
+		return $str;
 	}
 	
 	
@@ -69,4 +139,3 @@ class requestController{
 	}
 	
 }
-?>

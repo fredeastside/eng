@@ -139,7 +139,7 @@ class SelectFromDB {
 	{
 		$this->selectData();
 
-		echo $this->sql."<br>";
+		//echo $this->sql."<br>";
 		
 		if($this->obj->query($this->sql, $this->line))
 		{
@@ -153,6 +153,28 @@ class SelectFromDB {
 			$this->limit_ofset = null;
 			$this->limit_rows = null;
 		}
+		
+		if($this->obj->num_rows()==0)
+		{
+			return null;
+		}
+		elseif ($this->obj->num_rows()==1)
+		{
+			return array($this->obj->fetch_array($type));
+		}
+		elseif ($this->obj->num_rows()>1)
+		{
+			for($i=0; $i<$this->obj->num_rows(); $i++)
+				$rows[] = $this->obj->fetch_array($type);
+			
+			$this->numrows = $this->obj->num_rows();
+			return $rows;
+		}
+	}
+	
+	function setQuery($query)
+	{		
+		$this->obj->query($query, $this->line);
 		
 		if($this->obj->num_rows()==0)
 		{

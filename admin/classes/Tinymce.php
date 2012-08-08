@@ -45,7 +45,7 @@ class Tinymce
 		// General options
 		editor_selector : \"elem_tinymce\",
 		mode : \"specific_textareas\",
-		theme : \"advanced\",
+		theme : \"advanced\", relative_urls : false,
 		plugins : \"imagemanager,filemanager,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave\",
 
 		// Theme options
