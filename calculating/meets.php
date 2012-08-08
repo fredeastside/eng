@@ -3,6 +3,8 @@
         $meets_obj = new fmakeMeets();
         
         $page = !empty($_GET['page']) ? abs((int)$_GET['page']) : 1;
+        if($request->getFilter('check'))
+            $page = 1;
         $limit = $configs->news_count ? $configs->news_count : 10;
         $offset = ($page - 1) * $limit;
         
@@ -16,10 +18,10 @@
                     $search_string = $request->getFilter('search_string') ? strip_tags($request->getFilter('search_string')) : null;
                     $category = $request->getFilter('event_category') ? strip_tags($request->getFilter('event_category')) : null;
                     $date = $request->getFilter('event_date') ? strip_tags($request->getFilter('event_date')) : null;
-                    printAr($category);
+                    //printAr($category);
                     $meets = $meets_obj->setSearch($search_string, $category, $date, $offset, $limit);
-					$count = $meets_obj->getRows();
-					//printAr($count);
+                    $count = $meets_obj->getRows();
+			
                     $pages = ceil($count/$limit);
                     if ($page < 1) {
                             $page = 1;
@@ -28,8 +30,19 @@
                             $page = $pages;
                     }
                     $pag_menu = $meets_obj->getPaginationMenu($page, $pages, true);
+                    $globalTemplateParam->set('search_string', $search_string);
+                    $globalTemplateParam->set('event_category', $category);
+                    if(preg_match("/(\d{2})\.(\d{2})\.(\d{4})/", $date)){
+                        $globalTemplateParam->set('date', $date);
+                    }
+                    $globalTemplateParam->set('event_date', $date);
                     $globalTemplateParam->set('pag_menu', $pag_menu);
-                    $globalTemplateParam->set('meets', $meets);
+                    if(!$meets){
+                        $not_found = true;
+                        $globalTemplateParam->set('not_found', $not_found);
+                    }
+                    else
+                        $globalTemplateParam->set('meets', $meets);
                     $globalTemplateParam->set('breadcrubs', $breadcrubs);
                     //printAr($meets);
                     $modul->template = "meets/all_meets.tpl";

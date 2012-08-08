@@ -152,13 +152,13 @@ class fmakeMeets extends fmakeCore {
                 
                 for($i = 1 ; $i <= $pages; $i++){
                         if($i == 1 && $paginator != $i)
-                            $pag_menu .= '<span class="prev"><a href="page-'.($paginator-1).$char.$request->writeFilter().'"><< Предыдущая</a></span><span><a href="page-'.$i.$char.$request->writeFilter().'">'.$i.'</a></span>';
+                            $pag_menu .= '<span class="prev"><a href="page-'.($paginator-1).$char.$request->writeFilter('check').'"><< Предыдущая</a></span><span><a href="page-'.$i.$char.$request->writeFilter('check').'">'.$i.'</a></span>';
                         elseif($i == $pages && $paginator != $i)
-                            $pag_menu .= '<span><a href="page-'.$i.$char.$request->writeFilter().'">'.$i.'</a></span><span class="next"><a href="page-'.($paginator+1).$char.$request->writeFilter().'">Следующая >></a></span>';
+                            $pag_menu .= '<span><a href="page-'.$i.$char.$request->writeFilter('check').'">'.$i.'</a></span><span class="next"><a href="page-'.($paginator+1).$char.$request->writeFilter('check').'">Следующая >></a></span>';
                         elseif($i == $paginator)
                                 $pag_menu .= '<span>'.$i.'</span>';
                         else
-                                $pag_menu .= '<span><a href="page-'.$i.$char.$request->writeFilter().'">'.$i.'</a></span>';
+                                $pag_menu .= '<span><a href="page-'.$i.$char.$request->writeFilter('check').'">'.$i.'</a></span>';
                 }
             }
             
@@ -183,27 +183,39 @@ class fmakeMeets extends fmakeCore {
         }
         
         public function setSearch($search_string, $category = false, $date = false, $offset = 0, $limit = 9){
+            
+            $this->order = "a.date";
+            
             $select = $this->dataBase->SelectFromDB( __LINE__);
             
-            $select->addFild("SQL_CALC_FOUND_ROWS id, 
-                name, 
-                title, 
-                description, 
-                redir, 
-                id_meet, 
-                date, 
-                anons, 
-                text, 
-                picture");
+            $select->addFild("SQL_CALC_FOUND_ROWS a.id as id_meets, 
+			a.name as name_meet, 
+                        a.active,
+			a.title as title_meet, 
+			a.description as description_meet, 
+			a.redir as redir_meet, 
+			a.id_meet, 
+			a.date, 
+			a.anons, 
+			a.text, 
+			a.picture, 
+			a.main,
+			b.id as cat_id,
+			b.name as cat_name,
+			b.title as cat_title,
+			b.description as cat_description,
+			b.redir as cat_redir");
+            
+            $select -> addWhere("a.active='1'");
             
             if($search_string){
-                $where = "MATCH(name, anons, text) AGAINST ('%s')";
+                $where = "MATCH(a.name, a.anons, a.text) AGAINST ('%s')";
                 $where = sprintf($where, mysql_real_escape_string($search_string));
                 $select->addWhere($where);
             }
             
             if($category){
-                $where = "id_meet = '%d'";
+                $where = "a.id_meet = '%d'";
                 $where = sprintf($where, $category);
                 $select->addWhere($where);
             }
@@ -211,7 +223,7 @@ class fmakeMeets extends fmakeCore {
             if($date){
                 if(preg_match("/(\d{2})\.(\d{2})\.(\d{4})/", $date)){
                     $date = $this->getDate($date);
-                    $where = "date = '%s'";
+                    $where = "a.date = '%s'";
                     $where = sprintf($where, mysql_real_escape_string($date));
                     $select->addWhere($where);
                 }else{
@@ -226,14 +238,15 @@ class fmakeMeets extends fmakeCore {
                             break;
                     }
                     if(preg_match("/(\d{4})-(\d{2})-(\d{2})/", $date)){
-                        $where = "date > '%s'";
+                        $where = "a.date > '%s'";
                         $where = sprintf($where, mysql_real_escape_string($date));
                         $select->addWhere($where);
                     }
                 }
             }
+            $select -> addOrder($this->order, (($this->order_as)?$this->order_as:'DESC'));
             $select->addLimit($offset, $limit);
-            $select = $select -> addFrom($this->table) -> queryDB();  
+            $select = $select -> addFrom($this->table." as a Left join meet_categories as b on a.id_meet=b.id") -> queryDB();  
             
             return $select;
         }

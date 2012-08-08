@@ -6,6 +6,7 @@
 	<meta name="description" content="[[if modul.description]]{modul.description}[[else]]{modul.title}[[endif]]" />
 	<meta name="keywords" content="[[if modul.keywords]]{modul.keywords}[[else]]{modul.title}[[endif]]" />
 	<link rel="stylesheet" type="text/css" href="/styles/main.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/south-street/jquery-ui-1.8.22.custom.css" />
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
         <!--[if lte IE 7]>
         <link rel="stylesheet" type="text/css" href="/styles/ie.css" />
@@ -16,11 +17,17 @@
 	<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="/js/fieldFocus.js"></script>
 	<script type="text/javascript" src="/js/scripts.js"></script>
-    <script src="/js/popup.js"  type="text/javascript"></script>
+        <script src="/js/popup.js"  type="text/javascript"></script>
+        <script type="text/javascript" src="/js/jquery.ui.core.js"></script>
+        <script type="text/javascript" src="/js/jquery.ui.widget.js"></script>
+        <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
+        <script type="text/javascript" src="/js/jquery.ui.datepicker-ru.js"></script>
 	
 	[[raw]]
 	<script>
-	
+	$(function() {
+		$.datepicker.setDefaults( $.datepicker.regional[ "ru" ] );
+	});
 	</script>
 	[[endraw]]
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />

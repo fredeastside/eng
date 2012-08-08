@@ -32,40 +32,13 @@
         [[endfor]]
     </div>
     [[endif]]
-
-    <div class="midbackground">
-        <div class="midbackbot">
-            <div class="midbackmid townback">
-                <h3>Поиск событий города</h3>
-                <form action="" method="get" id="search">
-                    <input type="hidden" name="filter[action]" value="search" />
-                    <div class="inputtext">
-                        <input name="filter[search_string]" value="" />
-                        [[if categories]]
-                        <select name="filter[event_category]" onchange="">
-                            <option value="">Выберите категорию</option>
-                            [[for item in categories]]
-                            <option value="{item.id}">{item.name}</option>
-                            [[endfor]]
-                        </select>
-                        [[endif]]
-
-                        <select name="filter[event_date]" onchange="">
-                            <option value="">Выберите дату</option>
-                            <option value="today">Сегодня</option>
-                            <option value="yersterday">Вчера</option>
-                            <option value="week">Неделя</option>
-                            <option value="month">Месяц</option>
-                        </select>
-                        <a href="#" class="search" onclick="setSearch(); return false;">Найти</a>
-                        <br/>
-                        <a href="#" class="selectbydate">Выбрать по числу</a>
-                    </div>                        
-                </form>
-            </div>
-        </div>
-    </div>
-
+    
+    [[ include TEMPLATE_PATH ~ "blocks/meet_filter.tpl"]]
+    
+    [[if not_found]]
+    <p>По вашему запросу ничего не найдено. Попробуйте уточнить поиск.</p>
+    [[endif]]
+    
     [[if meets]]
     [[for item in meets]]
     <div class="event-header">
