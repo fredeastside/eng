@@ -49,7 +49,7 @@ class fmakeNews extends fmakeCore {
 		return $date;
 	}
 	
-	public function getNews($main = false, $offset = 0, $limit = 9){
+	public function getNews($main = false, $offset = 0, $limit = 9, $id_category = false){
 		
 		$this->order = "a.date";
 		
@@ -74,7 +74,11 @@ class fmakeNews extends fmakeCore {
 			b.redir as cat_redir");
 		
 		//$select -> addWhere("a.id_category=b.id");
-		
+		if($id_category){
+                    $where = "a.id_category = '%d'";
+                    $where = sprintf($where, $id_category);
+                    $select -> addWhere($where);
+                }
 		$select -> addWhere("a.active='1'");
 		
                 if($main)
@@ -118,10 +122,15 @@ class fmakeNews extends fmakeCore {
 		
 	}
         
-        public function getPaginationPages($nums){
+        public function getPaginationPages($nums, $id_category = false){
             $select = $this->dataBase->SelectFromDB( __LINE__);
             $select->addFild("COUNT(*) AS cnt");
             $select -> addWhere("active='1'");
+            if($id_category){
+                    $where = "id_category = '%d'";
+                    $where = sprintf($where, $id_category);
+                    $select -> addWhere($where);
+                }
             $select = $select -> addFrom($this->table) -> queryDB();
             if($select)
                 $count = $select[0]['cnt'];

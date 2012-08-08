@@ -49,7 +49,7 @@ class fmakeMeets extends fmakeCore {
 		return $date;
 	}
 	
-	public function getMeets($main = false, $offset = 0, $limit = 9){
+	public function getMeets($main = false, $offset = 0, $limit = 9, $id_category = false){
 		
 		$this->order = "a.date";
 		
@@ -76,6 +76,12 @@ class fmakeMeets extends fmakeCore {
 		//$select -> addWhere("a.id_category=b.id");
 		
 		$select -> addWhere("a.active='1'");
+                
+                if($id_category){
+                    $where = "a.id_meet = '%d'";
+                    $where = sprintf($where, $id_category);
+                    $select -> addWhere($where);
+                }
 		
                 if($main)
                     $select -> addWhere("a.main='1'");
@@ -118,10 +124,15 @@ class fmakeMeets extends fmakeCore {
 		
 	}
         
-        public function getPaginationPages($nums){
+        public function getPaginationPages($nums, $id_category = false){
             $select = $this->dataBase->SelectFromDB( __LINE__);
             $select->addFild("COUNT(*) AS cnt");
             $select -> addWhere("active='1'");
+            if($id_category){
+                    $where = "id_meet = '%d'";
+                    $where = sprintf($where, $id_category);
+                    $select -> addWhere($where);
+                }
             $select = $select -> addFrom($this->table) -> queryDB();
             if($select)
                 $count = $select[0]['cnt'];
@@ -168,20 +179,64 @@ class fmakeMeets extends fmakeCore {
             }
         }
         
-        public function setSearch($search_string, $category = false, $date = false){
+        public function setSearch($search_string, $category = false, $date = false, $offset = 0, $limit = 9){
             $select = $this->dataBase->SelectFromDB( __LINE__);
             
-            if($serach_string)
-                $select->addWhere();
+            $select->addFild("SQL_CALC_FOUND_ROWS id, 
+                name, 
+                title, 
+                description, 
+                redir, 
+                id_meet, 
+                date, 
+                anons, 
+                text, 
+                picture");
             
-            if($category)
-                $select->addWhere();
+            if($search_string){
+                $where = "MATCH(name, anons, text) AGAINST ('%s')";
+                $where = sprintf($where, mysql_real_escape_string($search_string));
+                $select->addWhere($where);
+            }
+            
+            if($category){
+                $where = "id_meet = '%d'";
+                $where = sprintf($where, $category);
+                $select->addWhere($where);
+            }
             
             if($date){
-                $date = $this->getDate($date);
-                $select->addWhere();
+                if(preg_match("/(\d{2})\.(\d{2})\.(\d{4})/", $date)){
+                    $date = $this->getDate($date);
+                    $where = "date = '%s'";
+                    $where = sprintf($where, mysql_real_escape_string($date));
+                    $select->addWhere($where);
+                }else{
+                    switch($date){
+                        case 'today': $date = date("Y-m-d");
+                            break;
+                        case 'yersterday': $date = date("Y-m-d", time() - 24 * 60 * 60);
+                            break;
+                        case 'week': $date = date("Y-m-d", time() - 7 * 24 * 60 * 60);
+                            break;
+                        case 'month': $date = date("Y-m-d", time() - 30 * 24 * 60 * 60);
+                            break;
+                    }
+                    if(preg_match("/(\d{4})-(\d{2})-(\d{2})/", $date)){
+                        $where = "date > '%s'";
+                        $where = sprintf($where, mysql_real_escape_string($date));
+                        $select->addWhere($where);
+                    }
+                }
             }
-                
+            $select->addLimit($offset, $limit);
+            $select = $select -> addFrom($this->table) -> queryDB();  
+            
+            return $select;
+        }
+        
+        public function getRows(){
+            $str = "SELECT FOUND_ROWS()";
         }
 
 }

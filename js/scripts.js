@@ -3,3 +3,6 @@ $(document).ready(function(){
 	
 });
 
+function setSearch(){
+    $('form#search').submit();
+}

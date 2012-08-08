@@ -37,13 +37,13 @@
         <div class="midbackbot">
             <div class="midbackmid townback">
                 <h3>Поиск событий города</h3>
-                <form action="" method="post">
+                <form action="" method="post" id="search">
                     <input type="hidden" name="action" value="search" />
                     <div class="inputtext">
                         <input name="search_string" value="" />
                         [[if categories]]
                         <select name="event_category" onchange="">
-                            <option valie="">Выберите категорию</option>
+                            <option value="">Выберите категорию</option>
                             [[for item in categories]]
                             <option value="{item.id}">{item.name}</option>
                             [[endfor]]

@@ -16,7 +16,25 @@
         {item.name}
     </div>
     
-    <h1>{item.name}</h1>
+    <h1>{item.name}</h1><br/>
+    
+    [[if incidents]]
+        [[for item in incidents]]
+            <div class="event-header">
+                <a href="/[[if not(url)]]{incident_url}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_incident}/">{item.name_incident}</a>
+            </div>
+            <p class="paragraphtoimage">
+                {item.anons|raw}
+            </p>
+        [[endfor]]
+        
+        [[if pag_menu]]
+            <div class="pager" align="center">
+                {pag_menu|raw}
+            </div>
+        [[endif]]
+        
+    [[endif]]
     
     {item.text|raw}
 

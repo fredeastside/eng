@@ -139,7 +139,7 @@ class SelectFromDB {
 	{
 		$this->selectData();
 
-		//echo $this->sql."<br>";
+		echo $this->sql."<br>";
 		
 		if($this->obj->query($this->sql, $this->line))
 		{

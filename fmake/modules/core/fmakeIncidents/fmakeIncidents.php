@@ -50,13 +50,13 @@ class fmakeIncidents extends fmakeCore {
 		return $date;
 	}
 	
-	public function getIncidents($offset = 0, $limit = 9){
+	public function getIncidents($offset = 0, $limit = 9, $id_category = false){
 		
 		$this->order = "a.date";
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		
-		$select->addFild("a.id as id_incident, 
+		$select->addFild("a.id as idincident, 
 			a.name as name_incident, 
                         a.active,
 			a.title as title_incident, 
@@ -73,6 +73,11 @@ class fmakeIncidents extends fmakeCore {
 			b.redir as cat_redir");
 		
 		//$select -> addWhere("a.id_category=b.id");
+                if($id_category){
+                    $where = "a.id_incident = '%d'";
+                    $where = sprintf($where, $id_category);
+                    $select -> addWhere($where);
+                }
 		
 		$select -> addWhere("a.active='1'");
 		
@@ -114,10 +119,15 @@ class fmakeIncidents extends fmakeCore {
 		
 	}
         
-        public function getPaginationPages($nums){
+        public function getPaginationPages($nums, $id_category = false){
             $select = $this->dataBase->SelectFromDB( __LINE__);
             $select->addFild("COUNT(*) AS cnt");
             $select -> addWhere("active='1'");
+            if($id_category){
+                    $where = "id_incident = '%d'";
+                    $where = sprintf($where, $id_category);
+                    $select -> addWhere($where);
+                }
             $select = $select -> addFrom($this->table) -> queryDB();
             if($select)
                 $count = $select[0]['cnt'];
