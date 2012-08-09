@@ -4,12 +4,36 @@ setlocale(LC_ALL, 'ru_RU.UTF-8');
 mb_internal_encoding('UTF-8');
 ini_set('display_errors',1);
 error_reporting(7);
+//error_reporting(E_ALL);
 
 
 require('./fmake/FController.php');
 require './fmake/libs/function_xajax.php';
 //require('./fmake/libs/login.php');
+/*
+$xajax = new xajax();
 
+$xajax->registerFunction("myFunction");
+
+function myFunction($arg)
+{
+    // do some stuff based on $arg like query data from a database and
+    // put it into a variable like $newContent
+    $newContent = "Value of \$arg: ".$arg;
+
+    // Instantiate the xajaxResponse object
+    $objResponse = new xajaxResponse();
+
+    // add a command to the response to assign the innerHTML attribute of
+    // the element with id="SomeElementId" to whatever the new content is
+    $objResponse->assign("SomeElementId","innerHTML", $newContent);
+
+    //return theВ  xajaxResponse object
+    return $objResponse;
+}
+
+$xajax->processRequest();
+*/
 switch ($request->action){
 	case 'feedback':
 		$fmakeFeedback = new fmakeFeedback();
