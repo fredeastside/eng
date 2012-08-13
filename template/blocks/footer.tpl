@@ -1,4 +1,6 @@
 <div id="footer">
+	<div id="SomeElementId"></div>
+<button onclick="xajax_func('It worked!');"></button>
                 <div id="f-inner">
                     <div class="footer-container">
                         <div class="bottom-foot">
