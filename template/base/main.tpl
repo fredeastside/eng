@@ -11,6 +11,7 @@
                         <span class="inputname">Письмо</span>
                     </div>
                     <div class="emailsendpopup"><a href="#" onclick="sendLetter(); return false;">Отправить</a></div>
+                    <div id="right_send">Сообщение отправлено!</div>
                 </div>
                 <div class="sharepopup" id="popup98">
                     <div class="linkstoshare">

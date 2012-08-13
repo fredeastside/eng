@@ -1056,6 +1056,20 @@ pre{
     width:151px;
     margin-left:55px;
 }
+
+#right_send{
+display: none;
+    height: 60px;
+    left: 0;
+    padding-top: 45px;
+    position: absolute;
+    text-align: center;
+    top: 9px;
+    width: 254px;
+color: #8A8A8A;
+background-color: #DCDCDC;
+}
+
 .emailpopup .inputfield input{
     width:139px;
     height:21px;
