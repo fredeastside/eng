@@ -1,6 +1,9 @@
 <?php
         $breadcrubs = $modul->getBreadCrumbs($modul->id);
         $incident_obj = new fmakeIncidents();
+		
+		$incident_url = $incidents_obj->getUrlIncident();
+		$globalTemplateParam->set('incident_url',$incident_url);
         
         $page = !empty($_GET['page']) ? abs((int)$_GET['page']) : 1;
         $limit = $configs->news_count ? $configs->news_count : 10;

@@ -1,6 +1,9 @@
 <?php
         $breadcrubs = $modul->getBreadCrumbs($modul->id);
         $meets_obj = new fmakeMeets();
+		
+		$meet_url = $meets_obj->getUrlMeet();
+		$globalTemplateParam->set('meet_url',$meet_url);
         
         $page = !empty($_GET['page']) ? abs((int)$_GET['page']) : 1;
         if($request->getFilter('check'))

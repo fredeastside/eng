@@ -1,6 +1,9 @@
 <?php
         $breadcrubs = $modul->getBreadCrumbs($modul->id);
         $news_obj = new fmakeNews();
+		
+		$news_url = $news_obj->getUrlNews();
+		$globalTemplateParam->set('news_url',$news_url);
         
         $page = !empty($_GET['page']) ? abs((int)$_GET['page']) : 1;
         $limit = $configs->news_count ? $configs->news_count : 10;

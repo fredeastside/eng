@@ -62,6 +62,7 @@ $modul->getPage($request -> getEscape('modul') , $twig, $url);
 //добавляем каталог к основным модулям
 $menu = $modul->getAllForMenuSite(0, true,$q=е,$flag=true,true);
 //printAr($menu);
+
 $globalTemplateParam->set('menu',$menu);
 $globalTemplateParam->set('url',$url);
 $globalTemplateParam->set('modul',$modul);
