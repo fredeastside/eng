@@ -5,8 +5,9 @@ class fmakeNews extends fmakeCore {
     public $table = "news";
     public $order = "position";
     public $fileDirectory = "images/sitemodul_image/";
-	public $order_as = "DESC";
-	public $mod = "news";
+    public $order_as = "DESC";
+    public $mod = "news";
+    public $prefix = "";
 
     function addFile($tempName, $name) {
         $dirs = explode("/", $this->fileDirectory . '/' . $this->id);
@@ -23,7 +24,7 @@ class fmakeNews extends fmakeCore {
         $images->resize(640, 480, false, $dirname, '', false);
         $images->resize(201, 113, true, $dirname, 'vb', false);
         $images->resize(139, 85, true, $dirname, 'vm', false);
-        $images->resize(70, 47, true, $dirname, 'mini', false);
+        $images->resize(171, 96, true, $dirname, 'mini', false);
 
         $this->addParam('picture', $name);
         $this->update();
@@ -73,7 +74,6 @@ class fmakeNews extends fmakeCore {
 			b.description as cat_description,
 			b.redir as cat_redir");
 		
-		//$select -> addWhere("a.id_category=b.id");
 		if($id_category){
                     $where = "a.id_category = '%d'";
                     $where = sprintf($where, $id_category);
@@ -88,14 +88,14 @@ class fmakeNews extends fmakeCore {
 		
 		$select->addLimit($offset, $limit);
 		
-		return $select -> addFrom($this->table." as a Left join news_categories as b on a.id_category=b.id") -> queryDB();
+		return $select -> addFrom($this->table." as a Left join ".$this->prefix."news_categories as b on a.id_category=b.id") -> queryDB();
 	}
 	
 	private function getNewsCategory($id_category){
 		if(!$id_category)
 			return false;
 		
-		$this->table = 'news_categories';
+		$this->table = $this->prefix . 'news_categories';
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		
@@ -104,7 +104,7 @@ class fmakeNews extends fmakeCore {
 		$select -> addWhere(sprintf($where, $id_category));
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
-		$this->table = 'news';
+		$this->table = $this->prefix . 'news';
 		return $select[0];
 	}
 	
@@ -117,7 +117,7 @@ class fmakeNews extends fmakeCore {
 		$select -> addWhere(sprintf($where, $this->mod));
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
-		$this->table = 'news';
+		$this->table = $this->prefix . 'news';
 		return $select[0]['redir'];
 		
 	}
@@ -162,14 +162,14 @@ class fmakeNews extends fmakeCore {
         
         public function getItemByRedir($redir, $from = false){
             if($from)
-                $this->table = 'news_categories';
+                $this->table = $this->prefix.'news_categories';
             
             $select = $this->dataBase->SelectFromDB( __LINE__);
             $where = "redir = '%s'";
             $where = sprintf($where, mysql_real_escape_string($redir));
             $select -> addWhere($where);
             $select = $select -> addFrom($this->table) -> queryDB();
-            $this->table = 'news';
+            $this->table = $this->prefix.'news';
             
             if($select){
                 $select[0]['cat'] = $this->getNewsCategory($select[0]['id_category']);

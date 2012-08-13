@@ -130,6 +130,22 @@ class fmakeSiteModule extends fmakeCore {
                                         //printAr($cat);
 					$items[$key]['child'] = $cat;
 				}
+                                
+                                if ($items[$key]['file'] == 'business_news') {
+					$cat_obj = new fmakeBusinessNewsCategories();
+					$cat_obj->order = "position";
+					$cat = $cat_obj->getAll(true);
+                                        //printAr($cat);
+					$items[$key]['child'] = $cat;
+				}
+                                
+                                if ($items[$key]['file'] == 'education_news') {
+					$cat_obj = new fmakeEducationNewsCategories();
+					$cat_obj->order = "position";
+					$cat = $cat_obj->getAll(true);
+                                        //printAr($cat);
+					$items[$key]['child'] = $cat;
+				}
 			}
 		}
 		return $items;

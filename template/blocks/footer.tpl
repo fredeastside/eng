@@ -1,12 +1,10 @@
 <div id="footer">
-	<div id="SomeElementId"></div>
-<button onclick="xajax_func('It worked!');"></button>
                 <div id="f-inner">
                     <div class="footer-container">
                         <div class="bottom-foot">
                             <div class="mid-foot">
-                                <a href="#"><span class="logo"></span></a>
-                                <div class="email">Напишите нам <a href="#"></a></div>
+                                <a href="/"><span class="logo"></span></a>
+                                <!--div class="email">Напишите нам <a href="#"></a></div-->
                                 <div class="nav-menu">
                                 <dl>
                                     <dt>Образование</dt>
@@ -36,7 +34,7 @@
                                
                                 <div class="futuregroup">
                                     <div class="counter"><img alt="counter" src="/images/counter.png"/></div>
-                                    <div class="copyright"><a href="#">Создание сайтов</a> <span>- Future-Group.ru</span></div>
+                                    <div class="copyright"><a href="http://Future-Group.ru/" target="_blank">Создание сайтов</a> <span>- Future-Group.ru</span></div>
                                 </div>
                             </div>
                         </div>

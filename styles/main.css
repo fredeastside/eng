@@ -1063,6 +1063,7 @@ pre{
     padding-left:10px;
     color:#8a8a8a;
     font:10px/14px 'Arial';
+    margin-bottom: 3px;
 }
 .emailpopup .inputnames{
     color:#8a8a8a;
@@ -1093,7 +1094,7 @@ pre{
 .emailpopup .emailsendpopup{
     position:absolute;
     right:32px;
-    bottom:15px;
+    bottom:12px;
     color:#8a8a8a;
     font:11px/14px 'Arial';
 }

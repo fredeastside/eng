@@ -4,13 +4,13 @@
         <div id="page">
             <div class="p-inner">
                 <div class="emailpopup" id="popup99">
-                    <div class="inputfield"><input type="text" name="Email" value="{configs.email}" />
-                    <textarea name="text" rows="5" cols="10">Lorem ipsum dolor sit amet, consectetur adipisicing elit</textarea></div>
+                    <div class="inputfield"><input onfocus="$(this).css('border', '1px solid #D7D7D7')" id="main_form_email" type="text" name="email" value="" />
+                    <textarea name="msg" id="main_form_msg" rows="5" cols="10" onfocus="$(this).css('border', '1px solid #D7D7D7')"></textarea></div>
                     <div class="inputnames">
                         <span class="inputname emailname">Email</span> <br/>
                         <span class="inputname">Письмо</span>
                     </div>
-                    <div class="emailsendpopup"><a href="#">Отправить</a></div>
+                    <div class="emailsendpopup"><a href="#" onclick="sendLetter(); return false;">Отправить</a></div>
                 </div>
                 <div class="sharepopup" id="popup98">
                     <div class="linkstoshare">
@@ -60,99 +60,9 @@
                                 <tr>
                                     <td>
                                         [[ include TEMPLATE_PATH ~ "blocks/meets.tpl"]]
-                                        <div class="blockmidleft sosedbackground">
-                                            <h2 class="block-name"><em>Места</em></h2>
-                                            <div class="cl"></div>
-                                            <div class="news-item">
-                                                <div class="header"><a href="#">Мубарака могут освободить</a></div>
-                                                <div class="item-text">Административный суд Египта 7 июля рассмотрит ходатайство, поданное адвокатами приговоренного к пожизненному </div>
-                                                <div class="moreinfo"><a href="#">Подробнее</a></div>
-                                            </div>
-                                            <div class="news-item">
-                                                <div class="img-left"><img alt="smallimg" src="/images/imgsmallnews.jpg"/></div>
-                                                <div class="right-item">
-                                                    <div class="header"><a href="#">Сдаются в аренду места</a></div>
-                                                    <div class="item-text">Административный суд Египта 7 июля рассмотрит ходатайство, поданное адвокатами приговоренного к пожизненному</div>
-                                                    <div class="moreinfo"><a href="#">Подробнее</a></div>
-                                                </div>
-                                                <div class="cl"></div>
-                                            </div>   
-                                            <div class="places">
-                                                <a href="#">Рестораны</a>
-                                                <a href="#">Кафе</a>
-                                                <a href="#">Бары</a>
-                                                <a href="#">Парки</a>
-                                                <br/>
-                                                <a href="#">Музеи</a>
-                                                <a href="#">Театры</a>
-                                                <a href="#">Стадионы</a>
-                                            </div>
-                                            <div class="events-all"><a href="#">Все места</a></div>
-
-                                        </div>
-                                        <div class="blockmidleft">
-                                            <h2 class="block-name"><em>Бизнес</em></h2>
-                                            <div class="cl"></div>
-                                            <div>
-                                                <div class="left-info">
-                                                    <img alt="img1" src="/images/mib.jpg"/>
-                                                    <div class="left-text">
-                                                        <div class="headlink"><a href="#">Мубарака освободят</a></div>
-                                                        <span>Административный суд Египта 7 июля рассмотрит.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="right-info">
-                                                    <ul>
-                                                        <li><a href="#">Депозиты на акции: Еще один способ борьбы с кризисом</a></li>
-                                                        <li><a href="#">По делу о крушении Ту-134 в Карелии обвинен чиновник Росавиации</a></li>
-                                                        <li><a href="#">Судья лишил сборную Украины шанса на выход в плей-офф Евро-2012.</a></li>
-                                                    </ul>
-                                                </div> 
-                                            </div>
-                                            <div class="cl"></div>
-                                            <div class="placessmall">
-                                                <a href="#">Банки</a>
-                                                <a href="#">Страховые компании</a>
-                                                <a href="#">Инвестиционные компании</a>
-                                                <a href="#">Негосударственные пенсионные фонды</a>
-                                                <a href="#">Ломбарды</a>
-                                            </div>
-                                            <div class="events-all"><a href="#">Все финансы</a></div>
-
-                                        </div>
-                                        <div class="blockmidleft">
-                                            <h2 class="block-name"><em>Образование</em></h2>
-                                            <div class="cl"></div>
-                                            <div>
-                                                <div class="left-info">
-                                                    <img alt="img1" src="/images/mib.jpg"/>
-                                                    <div class="left-text">
-                                                        <div class="headlink"><a href="#">Мубарака освободят</a></div>
-                                                        <span>Административный суд Египта 7 июля рассмотрит.</span>
-                                                    </div>
-                                                </div>
-                                                <div class="right-info">
-                                                    <ul>
-                                                        <li><a href="#">Депозиты на акции: Еще один способ борьбы с кризисом</a></li>
-                                                        <li><a href="#">По делу о крушении Ту-134 в Карелии обвинен чиновник Росавиации</a></li>
-                                                        <li><a href="#">Судья лишил сборную Украины шанса на выход в плей-офф Евро-2012.</a></li>
-                                                    </ul>
-                                                </div> 
-                                            </div>
-                                            <div class="cl"></div>
-                                            <div class="placessmall">
-                                                <a href="#">Банки</a>
-                                                <a href="#">Страховые компании</a>
-                                                <a href="#">Инвестиционные компании</a>
-                                                <a href="#">Негосударственные пенсионные фонды</a>
-                                                <a href="#">Ломбарды</a>
-                                            </div>
-                                            <div class="events-all"><a href="#">Все финансы</a></div>
-
-                                        </div>
-                                        
-                                        
-                                        
+                                        [[ include TEMPLATE_PATH ~ "blocks/places.tpl"]]
+                                        [[ include TEMPLATE_PATH ~ "blocks/business_news.tpl"]]
+                                        [[ include TEMPLATE_PATH ~ "blocks/education_news.tpl"]]                                        
                                     </td>
                                 </tr>
                             </table>
