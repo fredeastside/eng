@@ -9,6 +9,7 @@
         $business_news_obj = new fmakeBusinessNews();
 	$business_news = $business_news_obj->getNews(true, 0, 4);
         $business_news_url = $business_news_obj->getUrlNews();
+		//printAr($business_news_url);
 	$globalTemplateParam->set('business_news_url',$business_news_url);
 	$globalTemplateParam->set('business_news',$business_news);
         $business_category_obj = new fmakeBusinessNewsCategories();

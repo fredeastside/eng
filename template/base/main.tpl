@@ -15,16 +15,16 @@
                 </div>
                 <div class="sharepopup" id="popup98">
                     <div class="linkstoshare">
-                        <a href="#">Vkontakte</a>
-                        <a href="#">Facebook</a>
-                        <a href="#">Twitter</a>
+                        <a href="http://vkontakte.ru/share.php?url=http://{hostname}/">Vkontakte</a>
+                        <a href="http://www.facebook.com/share.php?u=http://{hostname}/&t={modul.title}">Facebook</a>
+                        <a href="http://twitter.com/intent/tweet?text={modul.title}&url=http://{hostname}/">Twitter</a>
                     </div>
                 </div>
                 <div id="head">
                     <a href="/"><span id="logo"></span></a>
                     <div class="nav-top">
                         <span class="share"><a id="link98" href="javascript:display('show', 98)">Поделиться</a></span>
-                        <span class="sitemap"><a href="#">Карта сайта</a></span>
+                        <!--span class="sitemap"><a href="#">Карта сайта</a></span-->
                         <span class="emailto"><a id="link99" href="javascript:display('show', 99)">Написать нам</a></span>
                     </div>
                     <div class="banner">{configs.main_banner|raw}</div>

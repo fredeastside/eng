@@ -36,10 +36,12 @@ function sendLetter(){
     
     xajax_sendLetter(email, msg);
     
-    $("#right_send").fadeIn(1000, function(){
+    $("#right_send").fadeIn(2000, function(){
         $("#main_form_email").val("");
         $("#main_form_msg").val("");
-        $("#right_send").fadeOut(1000, function(){display('hide', 99);});
+		display('hide', 99);
+		$("#right_send").css("display", "none");
+        //$("#right_send").fadeOut(1000, function(){display('hide', 99);});
     });
    
     

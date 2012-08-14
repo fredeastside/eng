@@ -6,16 +6,16 @@
         [[for new_item in education_news]]
         [[if loop.first == 1]]
         <div class="left-info">
-            <a href="/[[if not(url)]]{news_url}[[else]]{url}[[endif]]/{new_item.cat_redir}/{new_item.redir_new}/"><img alt="img1" src="/images/sitemodul_image/education/{new_item.id_new}/mini{new_item.picture}"/></a>
+            <a href="/[[if not(url)]]{education_news_url}[[else]]{url}[[endif]]/{new_item.cat_redir}/{new_item.redir_new}/"><img alt="img1" src="/images/sitemodul_image/education/{new_item.id_new}/mini{new_item.picture}"/></a>
             <div class="left-text">
-                <div class="headlink"><a href="/[[if not(url)]]{news_url}[[else]]{url}[[endif]]/{new_item.cat_redir}/{new_item.redir_new}/">{new_item.name_new}</a></div>
+                <div class="headlink"><a href="/[[if not(url)]]{education_news_url}[[else]]{url}[[endif]]/{new_item.cat_redir}/{new_item.redir_new}/">{new_item.name_new}</a></div>
                 <span>{new_item.anons}</span>
             </div>
         </div>
         <div class="right-info">
             <ul>
         [[else]]
-                <li><a href="/[[if not(url)]]{news_url}[[else]]{url}[[endif]]/{new_item.cat_redir}/{new_item.redir_new}/">{new_item.name_new}</a></li>
+                <li><a href="/[[if not(url)]]{education_news_url}[[else]]{url}[[endif]]/{new_item.cat_redir}/{new_item.redir_new}/">{new_item.name_new}</a></li>
         [[endif]]
         [[endfor]]
             </ul>
