@@ -99,7 +99,7 @@ error_reporting(7);
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<title>Галлерея</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="gallery.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="/styles/admin/gallery.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="js/uploadify/uploadify.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="js/tags/tags.css" />
 	<link href="/styles/admin/main.css" type="text/css" rel="stylesheet">
@@ -138,7 +138,7 @@ $(document).ready(function(){
 		'fileDesc'	: 'Image Files',
 		'fileExt'	: '*.jpg;*.JPG;*.png;*.gif',
 		'sizeLimit' : 7097152,
-		'buttonImg' : '/images/uploadphoto.gif',
+		'buttonImg' : '/images/admin/gallery/uploadphoto.gif',
 		'width'		: 201,
 		'height'	: 38,
 		'onComplete' : function(event, queueID, fileObj, response, data) {
@@ -213,9 +213,11 @@ $(document).ready(function(){
 					<tr>
 						<td></td>
 						<td align="right" >
-							<a onclick="Otmena(<?php echo($id_gallery);?>);return false;" class="btn btn-purpure primary f14 primary-padding" href="#"><span><span>Отменить</span></span></a>
-							<!--  <button onclick="Otmena(<?php echo($id_gallery);?>);return false;" name="save" class="action-button"><div></div><span>Отменить</span> Отменить</button>  -->
-							<button onclick="updateParam();return false;" name="save" class="action-button"><div></div><span>Сохранить</span> Сохранить</button>
+							<!--a onclick="Otmena(<?php echo($id_gallery);?>);return false;" class="btn btn-purpure primary f14 primary-padding" href="#"><span><span>Отменить</span></span></a>
+							<  <button onclick="Otmena(<?php echo($id_gallery);?>);return false;" name="save" class="action-button"><div></div><span>Отменить</span> Отменить</button>  >
+							<button onclick="updateParam();return false;" name="save" class="action-button"><div></div><span>Сохранить</span> Сохранить</button-->
+							<button onclick="Otmena(<?php echo($id_gallery);?>);return false;" name="save" class="fmk-button-admin f10"><div><div><div>Отменить</div></div></div></button>
+       <button onclick="updateParam();return false;" name="save" class="fmk-button-admin f10"><div><div><div>Сохранить</div></div></div></button>
 						</td>
 					</tr>
 				</table>
