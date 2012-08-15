@@ -1,15 +1,20 @@
 <?php 
+header('Content-type: text/html; charset=utf-8'); 
+setlocale(LC_ALL, 'ru_RU.UTF-8');
+mb_internal_encoding('UTF-8');
+ini_set('display_errors',1);
+error_reporting(7);
 	ini_set('memory_limit','128M' );
-	require('../../libs/FController.php');
+	require('../../../FController.php');
 	$modulObj = new fmakeAdminController();
-	require_once(ROOT.'/admin/checklogin.php');
+	//require_once(ROOT.'/admin/checklogin.php');
 	
-	require_once (ROOT."/libs/xajax/xajax_core/xajax.inc.php");
+	require_once (ROOT . "/fmake/libs/xajax/xajax_core/xajax.inc.php");
 
 	$xajax = new xajax();
 	$xajax->configure('decodeUTF8Input',true);
 	//$xajax->configure('debug',true);
-	$xajax->configure('javascript URI','../../libs/xajax/');
+	$xajax->configure('javascript URI','/fmake/libs/xajax/');
 	//$xajax->processRequest();
 	$xajax->register(XAJAX_FUNCTION,"SaveGalleryCaption");
 	$xajax->register(XAJAX_FUNCTION,"deleteImage");
@@ -105,7 +110,8 @@
 	<script type="text/javascript" src="js/tags/tags.js"></script>
 	<?php $xajax->printJavascript(); ?>
 </head>
-<body style="overflow: hidden; padding: 20px;width: 690px;background: url(/images/prozr.png) repeat;">
+<body style="overflow: hidden; padding: 20px;width: 690px;background-color: #fff;">
+    <!--background: url(/images/prozr.png) repeat;-->
 <style>
 #uploadList li img.thb:hover {cursor: move;}
 #uploadList li {}

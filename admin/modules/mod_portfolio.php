@@ -27,7 +27,8 @@ function setParent($child,$parent){
 	//$objResponse->addScript("alert(".$child.")");
 	return $objResponse->getXML();
 }
-require_once (ROOT."/libs/xajax/xajax_core/xajax.inc.php");
+//require_once (ROOT."/libs/xajax/xajax_core/xajax.inc.php");
+require_once (ROOT . "/fmake/libs/xajax/xajax_core/xajax.inc.php");
 $xajax = new xajax();
 $xajax->setCharEncoding('utf8');
 //$xajax->debugOn();

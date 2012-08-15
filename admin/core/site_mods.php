@@ -106,7 +106,7 @@ switch($request->action)
 				}
 				$absitem -> newItem();
 				
-				$absitem->addXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''));
+				//$absitem->addXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''));
 			break;
 		
 			case 'update': // Переписать
@@ -117,13 +117,13 @@ switch($request->action)
 				}
 				$absitem -> update();
 				$item = $absitem->getInfo();
-				if($absitem->SerachUrlXml('http://'.$hostname.'/'.(($tmp_item['redir'])? $tmp_item['redir'].'/':'')) || $absitem->SerachUrlXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''))) $absitem->UpdateUrlXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''),'http://'.$hostname.'/'.(($tmp_item['redir'])? $tmp_item['redir'].'/':''));
-				else $absitem->addXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''));
+				//if($absitem->SerachUrlXml('http://'.$hostname.'/'.(($tmp_item['redir'])? $tmp_item['redir'].'/':'')) || $absitem->SerachUrlXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''))) $absitem->UpdateUrlXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''),'http://'.$hostname.'/'.(($tmp_item['redir'])? $tmp_item['redir'].'/':''));
+				//else $absitem->addXml('http://'.$hostname.'/'.(($item['redir'])? $item['redir'].'/':''));
 			break;
 		
 			case 'delete': // Удалить
 				$items = $absitem->getInfo();
-				$absitem->DeleteUrlXml('http://'.$hostname.'/'.$items['redir'].'/');
+				//$absitem->DeleteUrlXml('http://'.$hostname.'/'.$items['redir'].'/');
 				$absitem -> delete();
 			break;
 			

@@ -5,7 +5,7 @@
                             <div class="mid-foot">
                                 <a href="/"><span class="logo"></span></a>
                                 <!--div class="email">Напишите нам <a href="#"></a></div-->
-                                <div class="nav-menu">
+                                <!--div class="nav-menu">
                                 <dl>
                                     <dt>Образование</dt>
                                     <dd><a href="#">Пункт меню</a></dd>
@@ -30,7 +30,7 @@
                                     <dd><a href="#">Пункт меню</a></dd>
                                     <dd><a href="#">Пункт меню</a></dd>
                                 </dl>
-                                </div>
+                                </div-->
                                
                                 <div class="futuregroup">
                                     <div class="counter"><img alt="counter" src="/images/counter.png"/></div>

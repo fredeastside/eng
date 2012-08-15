@@ -1,5 +1,7 @@
 Options -Indexes
 
+ErrorDocument 404 /404
+
 RewriteEngine on
 Options All
 RewriteBase /

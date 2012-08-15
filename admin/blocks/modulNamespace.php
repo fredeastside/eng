@@ -8,6 +8,7 @@ $modulNameSpace = array(
     'news' => 'Новости',
     'incidents' => 'Происшествия',
     'meets' => 'События',
+    'mod_photo' => 'Фоторепортажи'
         //'mod_reg'=> 'Регистрация',
         //'mod_vhod'=> 'Вход на сайт',
         //'mod_search'=> 'Поиск',

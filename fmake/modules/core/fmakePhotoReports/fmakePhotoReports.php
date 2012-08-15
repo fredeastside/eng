@@ -1,12 +1,14 @@
 <?php
 
-class fmakeIncidents extends fmakeCore {
+class fmakePhotoReports extends fmakeCore {
 
-    public $table = "incidents";
+    public $table = "photo_reports";
     public $order = "position";
+    public $fileDirectory = "images/sitemodul_image/gallery/";
     public $order_as = "DESC";
-    public $mod = "incidents";
-	/*
+    //public $mod = "news";
+    //public $prefix = "";
+
     function addFile($tempName, $name) {
         $dirs = explode("/", $this->fileDirectory . '/' . $this->id);
         $dirname = ROOT . "/";
@@ -22,13 +24,11 @@ class fmakeIncidents extends fmakeCore {
         $images->resize(640, 480, false, $dirname, '', false);
         $images->resize(201, 113, true, $dirname, 'vb', false);
         $images->resize(139, 85, true, $dirname, 'vm', false);
-        $images->resize(70, 47, true, $dirname, 'mini', false);
+        $images->resize(171, 96, true, $dirname, 'mini', false);
 
         $this->addParam('picture', $name);
         $this->update();
     }
-	 * 
-	 */
 	
 	public function getDate($date_str){
 		if(!$date_str)
@@ -49,50 +49,53 @@ class fmakeIncidents extends fmakeCore {
 		
 		return $date;
 	}
-	
-	public function getIncidents($offset = 0, $limit = 9, $id_category = false){
+	/*
+	public function getNews($main = false, $offset = 0, $limit = 9, $id_category = false){
 		
 		$this->order = "a.date";
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		
-		$select->addFild("a.id as idincident, 
-			a.name as name_incident, 
+		$select->addFild("a.id as id_new, 
+			a.name as name_new, 
                         a.active,
-			a.title as title_incident, 
-			a.description as description_incident, 
-			a.redir as redir_incident, 
-			a.id_incident, 
+			a.title as title_new, 
+			a.description as description_new, 
+			a.redir as redir_new, 
+			a.id_category, 
 			a.date, 
 			a.anons, 
 			a.text, 
+			a.picture, 
+			a.main,
 			b.id as cat_id,
 			b.name as cat_name,
 			b.title as cat_title,
 			b.description as cat_description,
 			b.redir as cat_redir");
 		
-		//$select -> addWhere("a.id_category=b.id");
-                if($id_category){
-                    $where = "a.id_incident = '%d'";
+		if($id_category){
+                    $where = "a.id_category = '%d'";
                     $where = sprintf($where, $id_category);
                     $select -> addWhere($where);
                 }
-		
 		$select -> addWhere("a.active='1'");
+		
+                if($main)
+                    $select -> addWhere("a.main='1'");
 		
 		$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'DESC'));
 		
 		$select->addLimit($offset, $limit);
 		
-		return $select -> addFrom($this->table." as a Left join incident_categories as b on a.id_incident=b.id") -> queryDB();
+		return $select -> addFrom($this->table." as a Left join ".$this->prefix."news_categories as b on a.id_category=b.id") -> queryDB();
 	}
 	
-	private function getIncidentsCategory($id_category){
+	private function getNewsCategory($id_category){
 		if(!$id_category)
 			return false;
 		
-		$this->table = 'incident_categories';
+		$this->table = $this->prefix . 'news_categories';
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		
@@ -101,11 +104,11 @@ class fmakeIncidents extends fmakeCore {
 		$select -> addWhere(sprintf($where, $id_category));
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
-		$this->table = 'incidents';
+		$this->table = $this->prefix . 'news';
 		return $select[0];
 	}
 	
-	public function getUrlIncident(){
+	public function getUrlNews(){
 		$this->table = 'site_modul';
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		
@@ -114,7 +117,7 @@ class fmakeIncidents extends fmakeCore {
 		$select -> addWhere(sprintf($where, $this->mod));
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
-		$this->table = 'incidents';
+		$this->table = $this->prefix . 'news';
 		return $select[0]['redir'];
 		
 	}
@@ -124,7 +127,7 @@ class fmakeIncidents extends fmakeCore {
             $select->addFild("COUNT(*) AS cnt");
             $select -> addWhere("active='1'");
             if($id_category){
-                    $where = "id_incident = '%d'";
+                    $where = "id_category = '%d'";
                     $where = sprintf($where, $id_category);
                     $select -> addWhere($where);
                 }
@@ -159,21 +162,21 @@ class fmakeIncidents extends fmakeCore {
         
         public function getItemByRedir($redir, $from = false){
             if($from)
-                $this->table = 'incident_categories';
+                $this->table = $this->prefix.'news_categories';
             
             $select = $this->dataBase->SelectFromDB( __LINE__);
             $where = "redir = '%s'";
             $where = sprintf($where, mysql_real_escape_string($redir));
             $select -> addWhere($where);
             $select = $select -> addFrom($this->table) -> queryDB();
-            $this->table = 'incidents';
+            $this->table = $this->prefix.'news';
             
             if($select){
-                $select[0]['cat'] = $this->getIncidentsCategory($select[0]['id_incident']);
+                $select[0]['cat'] = $this->getNewsCategory($select[0]['id_category']);
                 return $select[0];
             }
         }
-
+*/
 }
 
 ?>

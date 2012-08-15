@@ -54,6 +54,11 @@ class fmakeGallery_Image extends fmakeSiteModule implements fmakeSiteModule_Exte
 		return $image[0]["COUNT(*)"];
 	}
 
+	function getPhoto($photo_name,$id_gallery) {
+		$select = $this->dataBase->SelectFromDB( __LINE__);
+		$image = $select-> addFrom($this->table) ->addWhere("id_catalog = '{$id_gallery}' AND image = '{$photo_name}' ") -> queryDB();
+		return $image[0];
+	}
 	
 	function addPreviewFoto($file,$id_gal){
 		
@@ -68,10 +73,10 @@ class fmakeGallery_Image extends fmakeSiteModule implements fmakeSiteModule_Exte
 		//echo $dirname;
 		$images = new imageMaker($file['name']);
 		$images->imagesData = $file['tmp_name'];
-		
-		$images->resize(800,false,false,$dirname.'/','',false);
-		
+		copy($file['tmp_name'],$dirname.$file['name']);
+		//$images->resize(800,false,false,$dirname.'/','',false);
 		$images->resize(137,false,false,$dirname.'/thumbs/','',false);
+		$images->resize(234,false,false,$dirname.'/thumbs/','mini_',false);
 				
 	}
 	
