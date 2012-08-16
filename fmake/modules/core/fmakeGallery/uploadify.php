@@ -4,7 +4,7 @@ Uploadify v3.0.0
 Copyright (c) 2010 Ronnie Garcia, Travis Nickels
 */
 
-require('../../libs/FController.php');
+require('../../../FController.php');
 ini_set('memory_limit','128M' );
 $targetFolder = '/images/galleries/'; // Relative to the root
 $id=$_GET[id_gallery];

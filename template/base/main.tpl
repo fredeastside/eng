@@ -33,26 +33,12 @@
                 <div id="content">  
                     [[block content]]
                     <div class="advertise-block">
-                        <div class="img-hoverlink">
-                            <div class="hoverlink"><a href="#">Спасатели обнаружили обломки сбитого Сирией турецкого ...</a></div>
-                            <img src="/images/news1.jpg" alt="news1"/>            
-                        </div>
-                        <div class="img-hoverlink">
-                            <div class="hoverlink"><a href="#">Глава дипломатии Евросоюза обеспокоена ситуацией ...</a></div>
-                            <img src="/images/news2.jpg" alt="news2"/>            
-                        </div>
+                        [[ include TEMPLATE_PATH ~ "blocks/photo_reports.tpl"]]
                         <div class="banner-right">
                             {configs.right_block|raw}
                         </div>
                     </div>
-                    <div class="left-menu">
-                        <h1>Навигация</h1>
-						[[ include TEMPLATE_PATH ~ "blocks/menu.tpl"]]
-                        <div class="banner-left">
-                            {configs.left_block|raw}
-                        </div>
-
-                    </div>
+                    [[ include TEMPLATE_PATH ~ "blocks/left_side.tpl"]]
                     <div class="right-block">
 						[[ include TEMPLATE_PATH ~ "blocks/news.tpl"]]
 						[[ include TEMPLATE_PATH ~ "blocks/incidents.tpl"]]

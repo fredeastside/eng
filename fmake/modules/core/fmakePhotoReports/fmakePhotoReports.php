@@ -6,7 +6,7 @@ class fmakePhotoReports extends fmakeCore {
     public $order = "position";
     public $fileDirectory = "images/sitemodul_image/gallery/";
     public $order_as = "DESC";
-    //public $mod = "news";
+    public $mod = "photo_reports";
     //public $prefix = "";
 
     function addFile($tempName, $name) {
@@ -24,7 +24,7 @@ class fmakePhotoReports extends fmakeCore {
         $images->resize(640, 480, false, $dirname, '', false);
         $images->resize(201, 113, true, $dirname, 'vb', false);
         $images->resize(139, 85, true, $dirname, 'vm', false);
-        $images->resize(171, 96, true, $dirname, 'mini', false);
+        $images->resize(190, 107, true, $dirname, 'mini', false);
 
         $this->addParam('picture', $name);
         $this->update();
@@ -49,48 +49,25 @@ class fmakePhotoReports extends fmakeCore {
 		
 		return $date;
 	}
-	/*
-	public function getNews($main = false, $offset = 0, $limit = 9, $id_category = false){
+	
+	public function getReports($main = false, $offset = 0, $limit = 2){
 		
-		$this->order = "a.date";
+		$this->order = "date";
 		
 		$select = $this->dataBase->SelectFromDB( __LINE__);
-		
-		$select->addFild("a.id as id_new, 
-			a.name as name_new, 
-                        a.active,
-			a.title as title_new, 
-			a.description as description_new, 
-			a.redir as redir_new, 
-			a.id_category, 
-			a.date, 
-			a.anons, 
-			a.text, 
-			a.picture, 
-			a.main,
-			b.id as cat_id,
-			b.name as cat_name,
-			b.title as cat_title,
-			b.description as cat_description,
-			b.redir as cat_redir");
-		
-		if($id_category){
-                    $where = "a.id_category = '%d'";
-                    $where = sprintf($where, $id_category);
-                    $select -> addWhere($where);
-                }
-		$select -> addWhere("a.active='1'");
+
+		$select -> addWhere("active='1'");
 		
                 if($main)
-                    $select -> addWhere("a.main='1'");
+                    $select -> addWhere("main='1'");
 		
 		$select -> addOrder($this->order, (($this->order_as)?$this->order_as:'DESC'));
 		
 		$select->addLimit($offset, $limit);
 		
-		return $select -> addFrom($this->table." as a Left join ".$this->prefix."news_categories as b on a.id_category=b.id") -> queryDB();
+		return $select -> addFrom($this->table) -> queryDB();
 	}
-	
+	/*
 	private function getNewsCategory($id_category){
 		if(!$id_category)
 			return false;
@@ -107,8 +84,8 @@ class fmakePhotoReports extends fmakeCore {
 		$this->table = $this->prefix . 'news';
 		return $select[0];
 	}
-	
-	public function getUrlNews(){
+	*/
+	public function getUrlReports(){
 		$this->table = 'site_modul';
 		$select = $this->dataBase->SelectFromDB( __LINE__);
 		
@@ -117,8 +94,8 @@ class fmakePhotoReports extends fmakeCore {
 		$select -> addWhere(sprintf($where, $this->mod));
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
-		$this->table = $this->prefix . 'news';
-		return $select[0]['redir'];
+		$this->table = $this->prefix . 'photo_reports';
+		return $select[0];
 		
 	}
         
@@ -159,24 +136,45 @@ class fmakePhotoReports extends fmakeCore {
             
             return $pag_menu;
         }
-        
-        public function getItemByRedir($redir, $from = false){
-            if($from)
-                $this->table = $this->prefix.'news_categories';
-            
+
+        public function getItemByRedir($redir){
+
             $select = $this->dataBase->SelectFromDB( __LINE__);
             $where = "redir = '%s'";
             $where = sprintf($where, mysql_real_escape_string($redir));
             $select -> addWhere($where);
             $select = $select -> addFrom($this->table) -> queryDB();
-            $this->table = $this->prefix.'news';
             
-            if($select){
-                $select[0]['cat'] = $this->getNewsCategory($select[0]['id_category']);
-                return $select[0];
-            }
+            return $select[0];
         }
-*/
+        
+        public function getGalleryId($id_modul){
+            if(!$id_modul)
+                return false;
+            
+            $select = $this->dataBase->SelectFromDB( __LINE__);
+            $where = "id_site_modul = '%d'";
+            $where = sprintf($where, $id_modul);
+            $select -> addWhere($where);
+            $select = $select -> addFrom("site_modul_gallery") -> queryDB();
+            
+            return $select[0]['id_gallery'];
+        }
+        
+        public function getPhotos($id_gallery){
+            if(!$id_gallery)
+                return false;
+            
+            $this->order = "position";
+            
+            $select = $this->dataBase->SelectFromDB( __LINE__);
+            $where = "id_catalog = '%d'";
+            $where = sprintf($where, $id_gallery);
+            $select -> addWhere($where);
+            $select -> addOrder($this->order, 'ASC');
+            return $select -> addFrom("gallery_images") -> queryDB();
+        }
+
 }
 
 ?>

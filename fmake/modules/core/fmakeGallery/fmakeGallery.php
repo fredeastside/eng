@@ -3,7 +3,7 @@ class fmakeGallery extends fmakeCore{
 	public $idField = "id";	
 	public $table = "gallery";
 	public $table_notice_galley = "site_modul_gallery";
-	public $imgFolder = "images/gallery/";
+	public $imgFolder = "images/galleries/";
 	
 	
 	function getByPage($id_catalog ,$limit, $page, $active = false) {

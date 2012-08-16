@@ -30,7 +30,9 @@ if (!$admin->isLogined())
 	$form->addVarchar("<em><b>Телефон</b></em>", "configs[phone1]",$configs->phone1,50,false,"Используется на основных страницах сайта и в футере");
 	$form->addVarchar("<em><b>Емайл</b></em>", "configs[email]",$configs->email,50,false,"Используется на основных страницах сайта и в футере, а так же для рассылки и оповещения с сайта");
         
-        $form->addVarchar("<em>Количество новостей<em>", "configs[news_count]",$configs->news_count,20,false,"Количество новостей, выводимых на странице");
+        $form->addVarchar("<em><b>Количество новостей</b><em>", "configs[news_count]",$configs->news_count,20,false,"Количество новостей, выводимых на странице");
+        
+        $form->addVarchar("<em><b>Количество фоторепортажей</b><em>", "configs[reports_count]",$configs->reports_count,20,false,"Количество фоторепортажей, выводимых на странице");
 	
 	$form->addSubmit("Добавить","Обновить");
 	$content = $form->printForm();

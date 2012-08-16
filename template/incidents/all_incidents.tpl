@@ -1,12 +1,6 @@
 [[ extends  TEMPLATE_PATH ~ "base/main.tpl" ]]
 [[block content]]
-<div class="left-menu">
-    <h1>Навигация</h1>
-    [[ include TEMPLATE_PATH ~ "blocks/menu.tpl"]]
-    <div class="banner-left">
-        {configs.left_block|raw}
-    </div>
-</div>
+[[ include TEMPLATE_PATH ~ "blocks/left_side.tpl"]]
 
 <div class="right-block">
 
@@ -28,7 +22,7 @@
     [[if incidents]]
         [[for item in incidents]]
             <div class="event-header">
-                <a href="/[[if not(url)]]{incident_url}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_incident}/">{item.name_incident}</a>
+                <a href="/[[if not(url)]]{incident_url.redir}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_incident}/">{item.name_incident}</a>
             </div>
             <p class="paragraphtoimage">
                 {item.anons|raw}

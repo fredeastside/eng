@@ -115,7 +115,7 @@ class fmakeIncidents extends fmakeCore {
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
 		$this->table = 'incidents';
-		return $select[0]['redir'];
+		return $select[0];
 		
 	}
         

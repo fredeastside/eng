@@ -1,23 +1,25 @@
 <?php 
-header('Content-type: text/html; charset=utf-8'); 
-setlocale(LC_ALL, 'ru_RU.UTF-8');
-mb_internal_encoding('UTF-8');
-ini_set('display_errors',1);
-error_reporting(7);
+	header('Content-type: text/html; charset=utf-8'); 
+	setlocale(LC_ALL, 'ru_RU.UTF-8');
+	mb_internal_encoding('UTF-8');
+	ini_set('display_errors',1);
+	error_reporting(7);
+
 	ini_set('memory_limit','128M' );
 	require('../../../FController.php');
 	$modulObj = new fmakeAdminController();
 	//require_once(ROOT.'/admin/checklogin.php');
 	
-	require_once (ROOT . "/fmake/libs/xajax/xajax_core/xajax.inc.php");
+	require_once (ROOT."/fmake/libs/xajax/xajax_core/xajax.inc.php");
 
 	$xajax = new xajax();
 	$xajax->configure('decodeUTF8Input',true);
 	//$xajax->configure('debug',true);
-	$xajax->configure('javascript URI','/fmake/libs/xajax/');
+	$xajax->configure('javascript URI','../../../libs/xajax/');
 	//$xajax->processRequest();
 	$xajax->register(XAJAX_FUNCTION,"SaveGalleryCaption");
 	$xajax->register(XAJAX_FUNCTION,"deleteImage");
+	$xajax->register(XAJAX_FUNCTION,"editImage");
 	$xajax->register(XAJAX_FUNCTION,"buttonOtmena");
 	
 	function SaveGalleryCaption($param) {
@@ -54,13 +56,47 @@ error_reporting(7);
 				$content .='<li>
 								<img class="thb" src="/images/galleries/'.$id_gallery.'/thumbs/'.$photo[image].'">
 								<input type="hidden" name="sort[]" value="'.$photo[image].'" />
-								<a style="position: absolute; right: -3px; top: -3px;" href="#" onclick="xajax_deleteImage('.$id_gallery.',\''.$photo[image].'\');return false;"><img src="/images/close.png"></a>
+								<a style="position: absolute; right: 30px; top: 3px;" href="#" onclick="xajax_editImage('.$id_gallery.',\''.$photo[image].'\');return false;"><img src="/images/admin/edit-mini.gif"></a>
+								<a style="position: absolute; right: -3px; top: -3px;" href="#" onclick="xajax_deleteImage('.$id_gallery.',\''.$photo[image].'\');return false;"><img src="/images/admin/close.png"></a>
 							</li>';
 			}
 		}
 		
 		$objResponse = new xajaxResponse();
 		$objResponse->assign("uploadList","innerHTML", $content);
+		return $objResponse;
+	}
+	function editImage($id_gallery,$image){
+		$fmakeGalleryImage = new fmakeGallery_Image();
+		$photo = $fmakeGalleryImage->getPhoto($image,$id_gallery);
+		$content = '<tr >
+			<td><img class="thb" src="/images/galleries/'.$id_gallery.'/thumbs/'.$photo[image].'"></td>
+			<td>
+				<form method="post" class="edit-image-params">
+					<input type="hidden" name="id_gallery" value="'.$id_gallery.'">	
+					<input type="hidden" name="action" value="edit-image-params">
+					<input type="hidden" name="id_image" value="'.$photo[id].'">
+					<table>
+						<tr>
+							<td>Имя</td>
+							<td><input type="text" name="title" value="'.$photo[title].'"></td>
+						</tr>
+						<tr>
+							<td>Текст</td>
+							<td><textarea name="text" >'.$photo[text].'</textarea></td>
+						</tr>
+						<tr>
+							<td align="right" colspan="2">
+								<button class="fmk-button-admin f10"><div><div><div>Сохранить</div></div></div></button>	
+							</td>
+						</tr>
+					</table>
+				</form>
+			</td>
+		</tr>';
+		
+		$objResponse = new xajaxResponse();
+		$objResponse->assign("edit-forms","innerHTML", $content);
 		return $objResponse;
 	}
 	
@@ -90,6 +126,13 @@ error_reporting(7);
 			$fmakeGalleryImage->editImageSort($id_gallery, $item, $key);
 		}
 	}
+	if($_POST[action]=='edit-image-params'){
+		$fmakeGalleryImage = new fmakeGallery_Image();
+		$fmakeGalleryImage->setId($_POST['id_image']);
+		$fmakeGalleryImage->addParam('title', $_POST['title']);
+		$fmakeGalleryImage->addParam('text', $_POST['text']);
+		$fmakeGalleryImage->update();
+	}
 	$fmakeGallery = new fmakeGallery($id_gallery);
 	$gallery = $fmakeGallery->getInfo();
 ?>
@@ -110,8 +153,7 @@ error_reporting(7);
 	<script type="text/javascript" src="js/tags/tags.js"></script>
 	<?php $xajax->printJavascript(); ?>
 </head>
-<body style="overflow: hidden; padding: 20px;width: 690px;background-color: #fff;">
-    <!--background: url(/images/prozr.png) repeat;-->
+<body style="overflow: hidden; padding: 20px;width: 690px;background: url(/images/prozr.png) repeat;">
 <style>
 #uploadList li img.thb:hover {cursor: move;}
 #uploadList li {}
@@ -143,7 +185,7 @@ $(document).ready(function(){
 		'height'	: 38,
 		'onComplete' : function(event, queueID, fileObj, response, data) {
             var uploadList = $('#uploadList');
-            uploadList.append("<li><img class=\"thb\"  src=\"/images/galleries/<?php echo($id_gallery); ?>/thumbs/"+escape(fileObj.name) + "\" alt=\"" + fileObj.name + "\" class=\"thb\" /><input type=\"hidden\" name=\"sort[]\" value=\"" + escape(fileObj.name) + "\" /><a style=\"position: absolute; right: -3px; top: -3px;\" href=\"#\" onclick=\"xajax_deleteImage(<?php echo($id_gallery);?>,'"+escape(fileObj.name)+"');return false;\"><img src=\"/images/close.png\"></a></li>");
+            uploadList.append("<li><img class=\"thb\"  src=\"/images/galleries/<?php echo($id_gallery); ?>/thumbs/"+escape(fileObj.name) + "\" alt=\"" + fileObj.name + "\" class=\"thb\" /><input type=\"hidden\" name=\"sort[]\" value=\"" + escape(fileObj.name) + "\" /><a style=\"position: absolute; right: 30px; top: 3px;\" href=\"#\" onclick=\"xajax_editImage(<?php echo($id_gallery);?>,'"+escape(fileObj.name)+"');return false;\"><img src=\"/images/admin/edit-mini.gif\"></a><a style=\"position: absolute; right: -3px; top: -3px;\" href=\"#\" onclick=\"xajax_deleteImage(<?php echo($id_gallery);?>,'"+escape(fileObj.name)+"');return false;\"><img src=\"/images/admin/close.png\"></a></li>");
         }
 	  });
 	
@@ -153,7 +195,7 @@ $(document).ready(function(){
 
 <div class="page-content" style="width: 680px;">
 	<a style="position: absolute; right: 65px; top: 28px;" href="#" onclick="Otmena(<?php echo($id_gallery);?>);return false;">
-		<img src="/images/close.png">
+		<img src="/images/admin/close.png">
 	</a>
 	<table class="rt">
 		<tr>
@@ -164,7 +206,7 @@ $(document).ready(function(){
 		<tr>
 			<td class="rt-ml"></td>
 			<td class="rt-mc">
-				<table class="edit-forms" >
+				<table class="edit-forms" id="edit-forms">
 					<tr>
 						<td>
 							<label id="title-label" for="title"><em>Название Галереи</em></label><br>
@@ -196,7 +238,8 @@ $(document).ready(function(){
 										$content .='<li>
 														<img class="thb" src="/images/galleries/'.$id_gallery.'/thumbs/'.$photo[image].'">
 														<input type="hidden" name="sort[]" value="'.$photo[image].'" />
-														<a style="position: absolute; right: -3px; top: -3px;" href="#" onclick="xajax_deleteImage('.$id_gallery.',\''.$photo[image].'\');return false;"><img src="/images/close.png"></a>
+														<a style="position: absolute; right: 30px; top: 3px;" href="#" onclick="xajax_editImage('.$id_gallery.',\''.$photo[image].'\');return false;"><img src="/images/admin/edit-mini.gif"></a>
+														<a style="position: absolute; right: -3px; top: -3px;" href="#" onclick="xajax_deleteImage('.$id_gallery.',\''.$photo[image].'\');return false;"><img src="/images/admin/close.png"></a>
 													</li>';
 									}
 									echo($content);
@@ -213,11 +256,9 @@ $(document).ready(function(){
 					<tr>
 						<td></td>
 						<td align="right" >
-							<!--a onclick="Otmena(<?php echo($id_gallery);?>);return false;" class="btn btn-purpure primary f14 primary-padding" href="#"><span><span>Отменить</span></span></a>
-							<  <button onclick="Otmena(<?php echo($id_gallery);?>);return false;" name="save" class="action-button"><div></div><span>Отменить</span> Отменить</button>  >
-							<button onclick="updateParam();return false;" name="save" class="action-button"><div></div><span>Сохранить</span> Сохранить</button-->
+							
 							<button onclick="Otmena(<?php echo($id_gallery);?>);return false;" name="save" class="fmk-button-admin f10"><div><div><div>Отменить</div></div></div></button>
-       <button onclick="updateParam();return false;" name="save" class="fmk-button-admin f10"><div><div><div>Сохранить</div></div></div></button>
+							<button onclick="updateParam();return false;" name="save" class="fmk-button-admin f10"><div><div><div>Сохранить</div></div></div></button>
 						</td>
 					</tr>
 				</table>

@@ -7,6 +7,7 @@
 	<meta name="keywords" content="[[if modul.keywords]]{modul.keywords}[[else]]{modul.title}[[endif]]" />
 	<link rel="stylesheet" type="text/css" href="/styles/main.css" />
         <link rel="stylesheet" type="text/css" href="/styles/south-street/jquery-ui-1.8.22.custom.css" />
+        <link rel="stylesheet" type="text/css" href="/styles/colorbox.css" />
 	<meta http-equiv="X-UA-Compatible" content="IE=7" />
         <!--[if lte IE 7]>
         <link rel="stylesheet" type="text/css" href="/styles/ie.css" />
@@ -22,7 +23,7 @@
         <script type="text/javascript" src="/js/jquery.ui.widget.js"></script>
         <script type="text/javascript" src="/js/jquery.ui.datepicker.js"></script>
         <script type="text/javascript" src="/js/jquery.ui.datepicker-ru.js"></script>
-	
+	<script type="text/javascript" src="/js/jquery.colorbox.js"></script>
 	[[raw]]
 	<script>
 	$(function() {

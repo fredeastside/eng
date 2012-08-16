@@ -1,12 +1,6 @@
 [[ extends  TEMPLATE_PATH ~ "base/main.tpl" ]]
 [[block content]]
-<div class="left-menu">
-    <h1>Навигация</h1>
-    [[ include TEMPLATE_PATH ~ "blocks/menu.tpl"]]
-    <div class="banner-left">
-        {configs.left_block|raw}
-    </div>
-</div>
+[[ include TEMPLATE_PATH ~ "blocks/left_side.tpl"]]
 
 <div class="right-block">
 
@@ -28,7 +22,7 @@
     [[if categories]]
     <div class="afisha-topic">
         [[for item in categories]]
-        <a href="/[[if not(url)]]{meet_url}[[else]]{url}[[endif]]/{item.redir}/">{item.name}</a>
+        <a href="/[[if not(url)]]{meet_url.redir}[[else]]{url}[[endif]]/{item.redir}/">{item.name}</a>
         [[endfor]]
     </div>
     [[endif]]
@@ -42,7 +36,7 @@
     [[if meets]]
     [[for item in meets]]
     <div class="event-header">
-        <a href="/[[if not(url)]]{meet_url}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_meet}/">{item.name_meet}</a>
+        <a href="/[[if not(url)]]{meet_url.redir}[[else]]{url}[[endif]]/{item.cat_redir}/{item.redir_meet}/">{item.name_meet}</a>
     </div>
     [[if item.picture]]<img class="event-image" src="/images/sitemodul_image/meets/{item.id_meets}/vm{item.picture}" alt="image">[[endif]]
     <p class="paragraphtoimage">

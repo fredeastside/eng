@@ -118,7 +118,7 @@ class fmakeNews extends fmakeCore {
 		
 		$select = $select -> addFrom($this->table) -> queryDB();
 		$this->table = $this->prefix . 'news';
-		return $select[0]['redir'];
+		return $select[0];
 		
 	}
         

@@ -6,6 +6,12 @@
 	$globalTemplateParam->set('news_url',$news_url);
 	$globalTemplateParam->set('news',$news);
         
+        $reports_obj = new fmakePhotoReports();
+	$reports = $reports_obj->getReports(true);
+        $reports_url = $reports_obj->getUrlReports();
+	$globalTemplateParam->set('reports_url', $reports_url);
+	$globalTemplateParam->set('reports',$reports);
+        
         $business_news_obj = new fmakeBusinessNews();
 	$business_news = $business_news_obj->getNews(true, 0, 4);
         $business_news_url = $business_news_obj->getUrlNews();

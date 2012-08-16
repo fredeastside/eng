@@ -1,18 +1,12 @@
 [[ extends  TEMPLATE_PATH ~ "base/main.tpl" ]]
 [[block content]]
-<div class="left-menu">
-    <h1>Навигация</h1>
-    [[ include TEMPLATE_PATH ~ "blocks/menu.tpl"]]
-    <div class="banner-left">
-        {configs.left_block|raw}
-    </div>
-</div>
-
+[[ include TEMPLATE_PATH ~ "blocks/left_side.tpl"]]
 <div class="right-block">
 
     <div class="cucumbers">
         <a href="/">Главная</a> 
-        <span>/</span> <a href="/{news_url}/{item.cat.redir}/">{item.cat.name}</a> <span>/</span>
+        <span>/</span> <a href="/{news_url.redir}/">{news_url.caption}</a>
+        <span>/</span> <a href="/{news_url.redir}/{item.cat.redir}/">{item.cat.name}</a> <span>/</span>
         {item.name}
     </div>
     

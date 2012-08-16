@@ -14,6 +14,15 @@ class fmakeGallery_Image extends fmakeSiteModule implements fmakeSiteModule_Exte
 		return $select -> addFrom($this->table) ->addWhere("id_catalog = '{$id_catalog}'") -> addOrder($this->order, ASC) -> addLimit((($page-1)*$limit), $limit) -> queryDB();
 	}
 	
+	function getByPageCount($id_catalog, $active = false) {
+		
+		$select = $this->dataBase->SelectFromDB( __LINE__);
+		if($active)
+			$select -> addWhere("active='1'");
+		$result = $select ->addFild("COUNT(*)")-> addFrom($this->table) ->addWhere("id_catalog = '{$id_catalog}'") -> queryDB();
+		return $result[0]["COUNT(*)"];
+	}
+	
 	function editImageParams($id_catalog,$name_image,$fild_image, $active = false) {
 		
 		$update = $this->dataBase->UpdateDB( __LINE__);
@@ -69,14 +78,14 @@ class fmakeGallery_Image extends fmakeSiteModule implements fmakeSiteModule_Exte
 			$dirname = $dirname.$dir."/";
 			if(!is_dir($dirname)) mkdir($dirname);	
 		}
-		
+		if(!is_dir($dirname."/thumbs/")) mkdir($dirname."/thumbs/");
 		//echo $dirname;
 		$images = new imageMaker($file['name']);
 		$images->imagesData = $file['tmp_name'];
 		copy($file['tmp_name'],$dirname.$file['name']);
 		//$images->resize(800,false,false,$dirname.'/','',false);
-		$images->resize(137,false,false,$dirname.'/thumbs/','',false);
-		$images->resize(234,false,false,$dirname.'/thumbs/','mini_',false);
+		$images->resize(140,111,true,$dirname.'/thumbs/','',false);
+		//$images->resize(168,173,true,$dirname.'/thumbs/','mini_',false);
 				
 	}
 	

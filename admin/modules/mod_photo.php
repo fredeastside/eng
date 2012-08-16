@@ -100,11 +100,11 @@ switch ($request->action) {
     case 'new': // Далее форма
         
         //галлерея
-		//$fmakeGalleryNotice = new fmakeGallery();
-		//$fmakeGalleryNotice->table = $fmakeGalleryNotice->table_notice_galley;
-		//$fmakeGalleryNotice->idField = 'id_site_modul';
-		//$fmakeGalleryNotice->setId($request->id);
-		//$do_gallery = $fmakeGalleryNotice->getInfo();
+		$fmakeGalleryNotice = new fmakeGallery();
+		$fmakeGalleryNotice->table = $fmakeGalleryNotice->table_notice_galley;
+		$fmakeGalleryNotice->idField = 'id_site_modul';
+		$fmakeGalleryNotice->setId($request->id);
+		$do_gallery = $fmakeGalleryNotice->getInfo();
 		$fmakeGallery = new fmakeGallery();
 		$fmakeGallery->setId($do_gallery['id_gallery']);
 		$item_gallery = $fmakeGallery->getInfo();
@@ -128,13 +128,13 @@ switch ($request->action) {
             $form->addHtml("", "<tr><td colspan='2'><img src='/{$absitem->fileDirectory}{$items['id']}/vm{$items['picture']}' /></td></tr>");
         $form->addFile("Основное фото:", "picture",$text = false);
         
-        $form->addCheckBox("Главная новость", "in_main", $items["main"], true);
+        $form->addCheckBox("Главный репортаж", "in_main", $items["main"], true);
         $form->addHidden("main", "1");
         
         /*-----------------галлерея----------------------*/
 		if($items){
 			if($item_gallery){
-				$form->addHtml('','<td colspan="2"><a class="action-link" onclick="return false;" id="link-gallery" href="/modules/fmakeGallery/index.php?id_gallery='.$item_gallery['id'].'"><div><img alt="" src="/images/admin/and.png"></div>Изменить галерею</a> <div style="padding-top: 6px;">'.$item_gallery[caption].'</div><td>');
+				$form->addHtml('','<td colspan="2"><a class="action-link" onclick="return false;" id="link-gallery" href="../../fmake/modules/core/fmakeGallery/index.php?id_gallery='.$item_gallery['id'].'"><div><img alt="" src="/images/admin/and.png"></div>Изменить галерею</a> <div style="padding-top: 6px;">'.$item_gallery[caption].'</div><td>');
 			}
 			else{
 				$form->addHtml('','<td colspan="2"><a class="action-link" onclick="return false;" id="link-gallery" href="../../fmake/modules/core/fmakeGallery/index.php?id_gallery='.$item_gallery['id'].'&id_content='.$items['id'].'"><div><img alt="" src="/images/admin/and.png"></div>Добавить галерею</a> <td>');
